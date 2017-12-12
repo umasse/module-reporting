@@ -461,6 +461,13 @@ class createpdf {
             $html = str_replace("[Student DOB]", $this->dob, $html);
             $html = str_replace("[Student email]", $this->studentEmail, $html);
             ///////////////////////////////
+
+            ///////////////////////////////
+            // FIX FOR ALLOWING CARRIAGE RETURNS
+            // https://stackoverflow.com/questions/28835690/tcpdf-writehtmlcell-new-line-issue
+            $needles = array("<br>", "&#13;", "<br/>", "\n");
+            $replacement = "<br />";
+            $html = str_replace($needles, $replacement, $html);
             
             $pdf->writeHTML($html);
         }
@@ -946,51 +953,28 @@ EOD;
         // Right now it doesn't, and organizes reports by increasing number per school year, not
         // good enough. Either fix that, or extend this block to have some sort of configuration.
 
-        // For now, hardcoding current term!!
-        $termName = 'Term 1';
-        $termFirstDay='2017-08-07';
-        $termLastDay='2017-10-06';
-        $termID=9;
-
-        list($termFirstDayYear, $termFirstDayMonth, $termFirstDayDay) = explode('-', $termFirstDay);
-        $termFirstDayStamp = mktime(0, 0, 0, $termFirstDayMonth, $termFirstDayDay, $termFirstDayYear);
-        list($termLastDayYear, $termLastDayMonth, $termLastDayDay) = explode('-', $termLastDay);
-        $termLastDayStamp = mktime(0, 0, 0, $termLastDayMonth, $termLastDayDay, $termLastDayYear);
+        // For now, hardcoding current term IDs!!
+        //$termName = 'Semester 1';
+        // Restructure it all to have an array of Term IDs
+        $attendanceterms = [];
+        $attendanceterms[0] = [
+            'id' => 9,
+            'name' => 'Term 1',
+            'firstday' => '2017-08-07',
+            'lastday' => '2017-10-06'
+        ];
+        $attendanceterms[1] = [
+            'id' => 10,
+            'name' => 'Term 2',
+            'firstday' => '2017-10-16',
+            'lastday' => '2017-12-15'
+        ];
 
         $countSchoolDays = 0;
         $countAbsent = 0;
         $countPresent = 0;
         $countTypes = array();
         $countReasons = array();
-
-        $output .= "<table class=\"attendanceHeader\"><tr><td>".$termName."</td></tr></table>";
-
-        //Count back to first Monday before first day
-        $startDayStamp = $termFirstDayStamp;
-        while (date('D', $startDayStamp) != 'Mon') {
-            $startDayStamp = $startDayStamp - 86400;
-        }
-
-        //Count forward to first Sunday after last day
-        $endDayStamp = $termLastDayStamp;
-        while (date('D', $endDayStamp) != 'Sun') {
-            $endDayStamp = $endDayStamp + 86400;
-        }
-
-        //Get the special days
-        try {
-            $dataSpecial = array('gibbonSchoolYearTermID' => $termID);
-            $sqlSpecial = "SELECT name, date FROM gibbonSchoolYearSpecialDay WHERE gibbonSchoolYearTermID=:gibbonSchoolYearTermID AND type='School Closure' ORDER BY date";
-            $resultSpecial = $this->connection2->prepare($sqlSpecial);
-            $resultSpecial->execute($dataSpecial);
-        } catch (PDOException $e) {
-            echo "<div class='error'>".$e->getMessage().'</div>';
-        }
-
-        $rowSpecial = null;
-        if ($resultSpecial->rowCount() > 0) {
-            $rowSpecial = $resultSpecial->fetch();
-        }
 
         // Check which days are school days
         $days = array();
@@ -1020,173 +1004,215 @@ EOD;
             }
         }
 
-        $count = 0;
-        $weeks = 2;
+        // Start looping per term here
 
-        $output .= "<table class=\"minihistoryCalendar\" cellspacing=\"0\" style=\"width: 100%\">";
-        $output .= "<tr class=\"minihistoryCalendarHead\">";
-        for ($w = 0; $w < $weeks; ++$w) {
-            if ($days['Mon'] == 'Y') {
-                $output .= "<th>Mon</th>";
-            }
-            if ($days['Tue'] == 'Y') {
-                $output .= "<th>Tue</th>";
-            }
-            if ($days['Wed'] == 'Y') {
-                $output .= "<th>Wed</th>";
-            }
-            if ($days['Thu'] == 'Y') {
-                $output .= "<th>Thu</th>";
-            }
-            if ($days['Fri'] == 'Y') {
-                $output .= "<th>Fri</th>";
-            }
-            if ($days['Sat'] == 'Y') {
-                $output .= "<th>Sat</th>";
-            }
-            if ($days['Sun'] == 'Y') {
-                $output .= "<th>Sun</th>";
-            }
-        }
-        $output .= '</tr>';
+        foreach($attendanceterms as $current_term) {
 
-        //Make sure we are not showing future dates
-        $now = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
-        $end = $endDayStamp;
-        if ($now < $endDayStamp) {
-            $end = $now;
-        }
-        //Display grid
-        // Changing regional date format to "d-m-Y" e.g. 17-03-2017
-        // Original was $_SESSION[$guid]['i18n']['dateFormatPHP']
-        for ($i = $startDayStamp;$i <= $end;$i = $i + 86400) {
-            if ($days[date('D', $i)] == 'Y') {
-                if (($count % ($days['count'] * $weeks)) == 0 and $days[date('D', $i)] == 'Y') {
-                    $output .= "<tr>";
-                }
+            list($termFirstDayYear, $termFirstDayMonth, $termFirstDayDay) = explode('-', $current_term['firstday']);
+            $termFirstDayStamp = mktime(0, 0, 0, $termFirstDayMonth, $termFirstDayDay, $termFirstDayYear);
+            list($termLastDayYear, $termLastDayMonth, $termLastDayDay) = explode('-', $current_term['lastday']);
+            $termLastDayStamp = mktime(0, 0, 0, $termLastDayMonth, $termLastDayDay, $termLastDayYear);
 
-                //Before student started at school
-                if ($dateStart != '' and date('Y-m-d', $i) < $dateStart) {
-                    $output .= "<td class=\"dayClosed\">".date("d-m-Y", $i)."<br />";
-                    $output .= "Before Start Date";
-                    $output .= "</td>";
-                    ++$count;
+            $output .= "<table class=\"attendanceHeader\"><tr><td>".$current_term['name']."</td></tr></table>";
+
+            //Count back to first Monday before first day
+            $startDayStamp = $termFirstDayStamp;
+            while (date('D', $startDayStamp) != 'Mon') {
+                $startDayStamp = $startDayStamp - 86400;
+            }
+
+            //Count forward to first Sunday after last day
+            $endDayStamp = $termLastDayStamp;
+            while (date('D', $endDayStamp) != 'Sun') {
+                $endDayStamp = $endDayStamp + 86400;
+            }
+
+            //Get the special days
+            try {
+                $dataSpecial = array('gibbonSchoolYearTermID' => $current_term['id']);
+                $sqlSpecial = "SELECT name, date FROM gibbonSchoolYearSpecialDay WHERE gibbonSchoolYearTermID=:gibbonSchoolYearTermID AND type='School Closure' ORDER BY date";
+                $resultSpecial = $this->connection2->prepare($sqlSpecial);
+                $resultSpecial->execute($dataSpecial);
+            } catch (PDOException $e) {
+                echo "<div class='error'>".$e->getMessage().'</div>';
+            }
+
+            $rowSpecial = null;
+            if ($resultSpecial->rowCount() > 0) {
+                $rowSpecial = $resultSpecial->fetch();
+            }
+
+            $count = 0;
+            $weeks = 2;
+
+            $output .= "<table class=\"minihistoryCalendar\" cellspacing=\"0\" style=\"width: 100%\">";
+            $output .= "<tr class=\"minihistoryCalendarHead\">";
+            for ($w = 0; $w < $weeks; ++$w) {
+                if ($days['Mon'] == 'Y') {
+                    $output .= "<th>Mon</th>";
                 }
-                //After student left school
-                elseif ($dateEnd != '' and date('Y-m-d', $i) > $dateEnd) {
-                    $output .= "<td class=\"dayClosed\">".date("d-m-Y", $i)."<br />";
-                    $output .= "After End Date";
-                    $output .= "</td>";
-                    ++$count;
+                if ($days['Tue'] == 'Y') {
+                    $output .= "<th>Tue</th>";
                 }
-                //Student attending school
-                else {
-                    $specialDayStamp = null;
-                    if ($rowSpecial != null) {
-                        if ($rowSpecial == true) {
-                            list($specialDayYear, $specialDayMonth, $specialDayDay) = explode('-', $rowSpecial['date']);
-                            $specialDayStamp = mktime(0, 0, 0, $specialDayMonth, $specialDayDay, $specialDayYear);
-                        }
+                if ($days['Wed'] == 'Y') {
+                    $output .= "<th>Wed</th>";
+                }
+                if ($days['Thu'] == 'Y') {
+                    $output .= "<th>Thu</th>";
+                }
+                if ($days['Fri'] == 'Y') {
+                    $output .= "<th>Fri</th>";
+                }
+                if ($days['Sat'] == 'Y') {
+                    $output .= "<th>Sat</th>";
+                }
+                if ($days['Sun'] == 'Y') {
+                    $output .= "<th>Sun</th>";
+                }
+            }
+            $output .= '</tr>';
+
+            //Make sure we are not showing future dates
+            $now = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+            $end = $endDayStamp;
+            if ($now < $endDayStamp) {
+                $end = $now;
+            }
+            //Display grid
+            // Changing regional date format to "d-m-Y" e.g. 17-03-2017
+            // Original was $_SESSION[$guid]['i18n']['dateFormatPHP']
+            for ($i = $startDayStamp;$i <= $end;$i = $i + 86400) {
+                if ($days[date('D', $i)] == 'Y') {
+                    if (($count % ($days['count'] * $weeks)) == 0 and $days[date('D', $i)] == 'Y') {
+                        $output .= "<tr>";
                     }
 
-                    if ($i < $termFirstDayStamp or $i > $termLastDayStamp) {
-                        $output .= "<td class=\"dayClosed\"></td>";
+                    //Before student started at school
+                    if ($dateStart != '' and date('Y-m-d', $i) < $dateStart) {
+                        $output .= "<td class=\"dayClosed\">".date("d-m-Y", $i)."<br />";
+                        $output .= "Before Start Date";
+                        $output .= "</td>";
                         ++$count;
-
-                        if ($i == $specialDayStamp) {
-                            $rowSpecial = $resultSpecial->fetch();
+                    }
+                    //After student left school
+                    elseif ($dateEnd != '' and date('Y-m-d', $i) > $dateEnd) {
+                        $output .= "<td class=\"dayClosed\">".date("d-m-Y", $i)."<br />";
+                        $output .= "After End Date";
+                        $output .= "</td>";
+                        ++$count;
+                    }
+                    //Student attending school
+                    else {
+                        $specialDayStamp = null;
+                        if ($rowSpecial != null) {
+                            if ($rowSpecial == true) {
+                                list($specialDayYear, $specialDayMonth, $specialDayDay) = explode('-', $rowSpecial['date']);
+                                $specialDayStamp = mktime(0, 0, 0, $specialDayMonth, $specialDayDay, $specialDayYear);
+                            }
                         }
-                    } else {
-                        if ($i == $specialDayStamp) {
-                            $output .= "<td class=\"dayClosed\">";
-                            $output .= $rowSpecial['name'];
-                            $output .= '</td>';
+
+                        if ($i < $termFirstDayStamp or $i > $termLastDayStamp) {
+                            $output .= "<td class=\"dayClosed\"></td>";
                             ++$count;
-                            $rowSpecial = $resultSpecial->fetch();
+
+                            if ($i == $specialDayStamp) {
+                                $rowSpecial = $resultSpecial->fetch();
+                            }
                         } else {
-                            if ($days[date('D', $i)] == 'Y') {
-                                ++$countSchoolDays;
-
-                                $log = array();
-                                $logCount = 0;
-                                try {
-                                    $dataLog = array('date' => date('Y-m-d', $i), 'gibbonPersonID' => $this->studentID);
-                                    $sqlLog = 'SELECT gibbonAttendanceLogPerson.type, gibbonAttendanceLogPerson.reason FROM gibbonAttendanceLogPerson, gibbonAttendanceCode WHERE gibbonAttendanceLogPerson.type=gibbonAttendanceCode.name AND date=:date AND gibbonPersonID=:gibbonPersonID ORDER BY timestampTaken DESC';
-                                    $resultLog = $this->connection2->prepare($sqlLog);
-                                    $resultLog->execute($dataLog);
-                                } catch (PDOException $e) {
-                                    echo "<div class=\"error\">".$e->getMessage().'</div>';
-                                }
-
-                                if ($resultLog->rowCount() < 1) {
-                                    $class = 'dayNoData';
-                                } else {
-                                    while ($rowLog = $resultLog->fetch()) {
-                                        $log[$logCount][0] = $rowLog['type'];
-                                        $log[$logCount][1] = $rowLog['reason'];
-
-                                        if ($rowLog['type'] != 'Present') @$countTypes[ $rowLog['type'] ]++;
-                                        if ($rowLog['reason'] != '') @$countReasons[ $rowLog['reason'] ]++;
-
-                                        ++$logCount;
-                                    }
-
-                                    if ( $attendance->isTypeAbsent($log[0][0])) {
-                                        ++$countAbsent;
-                                        $class = 'dayAbsent';
-                                        $textClass = 'highlightAbsent';
-                                    } else {
-                                        ++$countPresent;
-                                        $class = 'dayPresent';
-                                        $textClass = 'highlightPresent';
-                                    }
-                                    if ($log[0][1] != '') {
-                                        $title = "title=\"".$log[0][1]."\"";
-                                    } else {
-                                        $title = '';
-                                    }
-                                }
-                                $output .= "<td class=\"".$class."\">".date("d-m-Y", $i)."<br />";
-                                if (count($log) > 0) {
-                                    $output .= "<span class=\"".$textClass."\" $title><b>".$log[0][0]."</b></span><br />";
-
-                                    for ($x = count($log); $x >= 0; --$x) {
-                                        if (isset($log[$x][0])) {
-                                            $textClass = $attendance->isTypeAbsent($log[$x][0])? 'highlightAbsent' : 'highlightPresent';
-                                            $output .= "<span class=\"".$textClass."\">";
-                                            $output .= $attendance->getAttendanceCodeByType( $log[$x][0] )['nameShort'];
-                                            $output .= "</span>";
-                                        }
-                                        if ($x != 0 and $x != count($log)) {
-                                            $output .= ' : ';
-                                        }
-                                    }
-                                }
-                                $output .= "</td>";
+                            if ($i == $specialDayStamp) {
+                                $output .= "<td class=\"dayClosed\">";
+                                $output .= $rowSpecial['name'];
+                                $output .= '</td>';
                                 ++$count;
+                                $rowSpecial = $resultSpecial->fetch();
+                            } else {
+                                if ($days[date('D', $i)] == 'Y') {
+                                    ++$countSchoolDays;
+
+                                    $log = array();
+                                    $logCount = 0;
+                                    try {
+                                        $dataLog = array('date' => date('Y-m-d', $i), 'gibbonPersonID' => $this->studentID);
+                                        $sqlLog = 'SELECT gibbonAttendanceLogPerson.type, gibbonAttendanceLogPerson.reason FROM gibbonAttendanceLogPerson, gibbonAttendanceCode WHERE gibbonAttendanceLogPerson.type=gibbonAttendanceCode.name AND date=:date AND gibbonPersonID=:gibbonPersonID ORDER BY timestampTaken DESC';
+                                        $resultLog = $this->connection2->prepare($sqlLog);
+                                        $resultLog->execute($dataLog);
+                                    } catch (PDOException $e) {
+                                        echo "<div class=\"error\">".$e->getMessage().'</div>';
+                                    }
+
+                                    if ($resultLog->rowCount() < 1) {
+                                        $class = 'dayNoData';
+                                    } else {
+                                        while ($rowLog = $resultLog->fetch()) {
+                                            $log[$logCount][0] = $rowLog['type'];
+                                            $log[$logCount][1] = $rowLog['reason'];
+
+                                            if ($rowLog['type'] != 'Present') @$countTypes[ $rowLog['type'] ]++;
+                                            if ($rowLog['reason'] != '') @$countReasons[ $rowLog['reason'] ]++;
+
+                                            ++$logCount;
+                                        }
+
+                                        if ( $attendance->isTypeAbsent($log[0][0])) {
+                                            ++$countAbsent;
+                                            $class = 'dayAbsent';
+                                            $textClass = 'highlightAbsent';
+                                        } else {
+                                            ++$countPresent;
+                                            $class = 'dayPresent';
+                                            $textClass = 'highlightPresent';
+                                        }
+                                        if ($log[0][1] != '') {
+                                            $title = "title=\"".$log[0][1]."\"";
+                                        } else {
+                                            $title = '';
+                                        }
+                                    }
+                                    $output .= "<td class=\"".$class."\">".date("d-m-Y", $i)."<br />";
+                                    if (count($log) > 0) {
+                                        $output .= "<span class=\"".$textClass."\" $title><b>".$log[0][0]."</b></span><br />";
+
+                                        for ($x = count($log); $x >= 0; --$x) {
+                                            if (isset($log[$x][0])) {
+                                                $textClass = $attendance->isTypeAbsent($log[$x][0])? 'highlightAbsent' : 'highlightPresent';
+                                                $output .= "<span class=\"".$textClass."\">";
+                                                $output .= $attendance->getAttendanceCodeByType( $log[$x][0] )['nameShort'];
+                                                $output .= "</span>";
+                                            }
+                                            if ($x != 0 and $x != count($log)) {
+                                                $output .= ' : ';
+                                            }
+                                        }
+                                    }
+                                    $output .= "</td>";
+                                    ++$count;
+                                }
                             }
                         }
                     }
-                }
 
-                if (($count % ($days['count'] * $weeks)) == 0 and $days[date('D', $i)] == 'Y') {
-                    $output .= "</tr>";
+                    if (($count % ($days['count'] * $weeks)) == 0 and $days[date('D', $i)] == 'Y') {
+                        $output .= "</tr>";
+                    }
                 }
             }
-        }
 
-        if ($count % ($days['count'] * $weeks) > 0) {
-            // Previous loop finished before creating enough <td></td>
-            while ($count % ($days['count'] * $weeks) > 0) {
-                $output .= "<td class=\"dayClosed\">";
-                $output .= "<!-- PADDING -->";
-                $output .= "</td>";
-                ++$count;
+            if ($count % ($days['count'] * $weeks) > 0) {
+                // Previous loop finished before creating enough <td></td>
+                while ($count % ($days['count'] * $weeks) > 0) {
+                    $output .= "<td class=\"dayClosed\">";
+                    $output .= "<!-- PADDING -->";
+                    $output .= "</td>";
+                    ++$count;
+                }
+                $output .= "</tr>";
             }
-            $output .= "</tr>";
+
+            $output .= "</table>";
+                
         }
 
-        $output .= "</table>";
+        // Looping per term finishes here
 
         // $output now has the table, and the variables for summary data have been calculated
         $html = <<<EOD

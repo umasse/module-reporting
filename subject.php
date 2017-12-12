@@ -22,9 +22,9 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/subject.php")==FA
     $thisPage = 'subject';
     $title = 'Write Subject Reports';
     ?>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     document.onkeypress = stopRKey;
-    </script>
+    </script> //-->
     <?php
 
     ///////////////////////////////////////////////////////////////////////////////////////////

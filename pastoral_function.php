@@ -62,7 +62,7 @@ class pastoral {
         
         // find maximum length of comment for this class
         //findMaxChar($connection2, $this->classID, $this->courseType, $this->maxChar);
-        $this->maxChar = 1000;
+        $this->maxChar = 1500;
         
         // adjust box size for size of comment
         //$this->numRows = intval($this->maxChar/60);
