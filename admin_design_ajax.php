@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "./function.php";
 include  "../../config.php";
 include "../../functions.php";
 
@@ -22,7 +23,9 @@ switch($action) {
         $data = array(
             'reportID' => $reportID
         );
-        $sql = "SELECT arrReportSection.sectionID, arrReportSection.sectionType, arrReportSectionDetail.sectionContent
+        $sql = "SELECT arrReportSection.sectionID, 
+            arrReportSection.sectionType, 
+            arrReportSectionDetail.sectionContent
             FROM arrReportSection
             LEFT JOIN arrReportSectionDetail
             ON arrReportSectionDetail.sectionID = arrReportSection.sectionID
@@ -31,6 +34,7 @@ switch($action) {
         $rs = $connection2->prepare($sql);
         $rs->execute($data);
         $section = $rs->fetchAll();
+
         $res = array(
             'section' => $section
         );
@@ -62,9 +66,9 @@ switch($action) {
             }
             if ($idliststring != '') {
                 $sql = "DELETE FROM arrReportSection
-                    WHERE sectionID NOT IN ($idliststring);
+                    WHERE sectionID NOT IN ($idliststring) AND reportID = $reportID;
                     DELETE FROM arrReportSectionDetail
-                    WHERE sectionID NOT IN ($idliststring)"; 
+                    WHERE sectionID NOT IN ($idliststring) AND reportID = $reportID"; 
                 $rs = $connection2->prepare($sql);
                 $result = $rs->execute();
                 if (!$result) {

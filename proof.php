@@ -5,10 +5,14 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/proof.php")==FALS
             print "You do not have access to this action." ;
     print "</div>" ;
 } else {
+    echo "<div class='trail'>";
+    echo "<div class='trailHead'><a href='".$_SESSION[$guid]['absoluteURL']."'>".__($guid, 'Home')."</a> > <a href='".$_SESSION[$guid]['absoluteURL'].'/index.php?q=/modules/'.getModuleName($_GET['q']).'/'.getModuleEntry($_GET['q'], $connection2, $guid)."'>".__($guid, getModuleName($_GET['q']))."</a> > </div><div class='trailEnd'>".__($guid, 'Proof').'</div>';
+    echo '</div>';    
     // proceed
     // include function pages
     $modpath =  "./modules/".$_SESSION[$guid]["module"];
     include $modpath."/proof_function.php" ;
+    include $modpath."/subject_function.php" ;
     include $modpath."/function.php";
     setSessionVariables($guid, $connection2);
 
@@ -18,8 +22,6 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/proof.php")==FALS
     // return page for forms
     $thisPage = 'proof';
     $title = 'Proof Reading';
-
-    pageTitle($title);
 
     echo "<div class='instruct' id='instruct' style='display:none'>";
     echo "<div style='float:left'><strong>Instructions</strong></div>";

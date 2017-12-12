@@ -1,4 +1,35 @@
 Gibbon Generic ARR
+v1.20
+undeclared variable in proof reading module
+
+v1.19
+fixed bug in the roll group select function
+fixed problem in creating PDF on some servers
+
+v1.18
+fixed bug in class teacher list
+
+v1.17
+fixed bug in subject teacher list
+
+v1.16
+tidied up some code
+made send mail page look pretty
+
+v1.15
+Added cell padding to PDF
+
+v1.14
+corrected error in design section delete
+added option to select orientation
+add option to display as columns instead of rows
+add option to email PDFs to parents
+add extra columns for grades for criteria
+
+v1.13
+made criteriatable sortable
+added rollOrder to list of insertable fields
+
 v1.12
 removed drop table from manifest
 

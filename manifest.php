@@ -23,7 +23,7 @@ $description="A gibbon module to allow teachers to write reports, and for studen
 $entryURL="index.php" ;
 $type="Additional" ;
 $category="Assess" ;
-$version="1.12" ;
+$version="1.20" ;
 $author="Andy Statham" ;
 $url="http://rapid36.com" ;
 
@@ -49,21 +49,23 @@ $moduleTables[1] = "
     `criteriaName` varchar(255) NOT NULL,
     `criteriaOrder` tinyint(3) unsigned NOT NULL,
     `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`criteriaID`)
+    PRIMARY KEY (`criteriaID`),
+    UNIQUE KEY `criteriaName` (`subjectID`,`criteriaName`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 
 $moduleTables[2] = "
     CREATE TABLE `arrReport` (
-  `reportID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `schoolYearID` int(3) unsigned zerofill NOT NULL,
-  `reportName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `reportNum` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `reportOrder` tinyint(4) DEFAULT NULL,
-  `gradeScale` int(10) unsigned DEFAULT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-   PRIMARY KEY (`reportID`),
-   UNIQUE KEY `schoolYearID` (`schoolYearID`,`reportName`),
-   KEY `reportNum` (`reportNum`)
+    reportID int(10) unsigned NOT NULL AUTO_INCREMENT,
+    schoolYearID int(3) unsigned zerofill NOT NULL,
+    reportName varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+    reportNum tinyint(3) unsigned NOT NULL DEFAULT '1',
+    reportOrder tinyint(4) DEFAULT NULL,
+    orientation tinyint(4) unsigned NOT NULL DEFAULT '1',
+    gradeScale int(10) unsigned DEFAULT NULL,
+    `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   PRIMARY KEY (reportID),
+   UNIQUE KEY schoolYearID (schoolYearID,reportName),
+   KEY reportNum (reportNum)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
     
 $moduleTables[3] = "
@@ -79,15 +81,17 @@ $moduleTables[3] = "
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 
 $moduleTables[4] = "
-    CREATE TABLE `arrReportGrade` (
-  `reportGradeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `reportID` int(10) unsigned DEFAULT NULL,
-  `criteriaID` int(10) unsigned NOT NULL,
-  `studentID` int(10) unsigned NOT NULL,
-  `gradeID` int(10) unsigned NOT NULL,
+    CREATE TABLE arrReportGrade (
+  reportGradeID int(10) unsigned NOT NULL AUTO_INCREMENT,
+  reportID int(10) unsigned DEFAULT NULL,
+  criteriaID int(10) unsigned NOT NULL,
+  studentID int(10) unsigned NOT NULL,
+  gradeID int(10) unsigned NOT NULL,
+  mark float NOT NULL,
+  percent float NOT NULL,
+  PRIMARY KEY (reportGradeID),
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`reportGradeID`),
-  UNIQUE KEY `criteriaID` (`studentID`,`criteriaID`)
+  UNIQUE KEY criteriaID (studentID, criteriaID)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 
 $moduleTables[5] = "
@@ -115,13 +119,15 @@ $moduleTables[7] = "
   `reportSectionTypeID` int(11) NOT NULL AUTO_INCREMENT,
   `sectionTypeName` varchar(45) DEFAULT NULL,
     `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`reportSectionTypeID`)
+    PRIMARY KEY (`reportSectionTypeID`),
+    UNIQUE KEY sectionTypeName (sectionTypeName)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 INSERT INTO `arrReportSectionType` (`reportSectionTypeID`, `sectionTypeName`) VALUES
         (1, 'Text'),
-        (2, 'Subject'),
-        (3, 'Pastoral'),
-        (4, 'Page Break');";
+        (2, 'Subject (row)'),
+        (3, 'Subject (column)'),
+        (4, 'Pastoral'),
+        (5, 'Page Break');";
 
 $moduleTables[8] = "
     CREATE TABLE `arrReportStatus` (
@@ -214,29 +220,29 @@ $actionRows[2]["categoryPermissionStudent"]="N" ;
 $actionRows[2]["categoryPermissionParent"]="N" ;
 $actionRows[2]["categoryPermissionOther"]="N" ;
 
-$actionRows[3]["name"]="Proof Reading" ;
-$actionRows[3]["precedence"]="3";
+$actionRows[3]["name"]="PDF Mail" ;
+$actionRows[3]["precedence"]="4";
 $actionRows[3]["category"]="ARR" ;
-$actionRows[3]["description"]="Check and amend reports" ;
-$actionRows[3]["URLList"]="index.php, proof.php" ;
-$actionRows[3]["entryURL"]="proof.php" ;
+$actionRows[3]["description"]="Send reports by email" ;
+$actionRows[3]["URLList"]="index.php, pdfmail.php, pdfmail_send.php" ;
+$actionRows[3]["entryURL"]="pdfmail.php" ;
 $actionRows[3]["defaultPermissionAdmin"]="Y" ;
-$actionRows[3]["defaultPermissionTeacher"]="Y" ;
+$actionRows[3]["defaultPermissionTeacher"]="N" ;
 $actionRows[3]["defaultPermissionStudent"]="N" ;
 $actionRows[3]["defaultPermissionParent"]="N" ;
 $actionRows[3]["defaultPermissionPublic"]="N" ;
 $actionRows[3]["defaultPermissionSupport"]="Y" ;
-$actionRows[3]["categoryPermissionStaff"]="Y" ;
+$actionRows[3]["categoryPermissionStaff"]="N" ;
 $actionRows[3]["categoryPermissionStudent"]="N" ;
 $actionRows[3]["categoryPermissionParent"]="N" ;
 $actionRows[3]["categoryPermissionOther"]="N" ;
 
-$actionRows[4]["name"]="Reports - Subject" ;
-$actionRows[4]["precedence"]="2";
+$actionRows[4]["name"]="Proof Reading" ;
+$actionRows[4]["precedence"]="3";
 $actionRows[4]["category"]="ARR" ;
-$actionRows[4]["description"]="Write subject reports" ;
-$actionRows[4]["URLList"]="index.php, subject.php" ;
-$actionRows[4]["entryURL"]="subject.php" ;
+$actionRows[4]["description"]="Check and amend reports" ;
+$actionRows[4]["URLList"]="index.php, proof.php" ;
+$actionRows[4]["entryURL"]="proof.php" ;
 $actionRows[4]["defaultPermissionAdmin"]="Y" ;
 $actionRows[4]["defaultPermissionTeacher"]="Y" ;
 $actionRows[4]["defaultPermissionStudent"]="N" ;
@@ -265,4 +271,20 @@ $actionRows[5]["categoryPermissionStaff"]="Y" ;
 $actionRows[5]["categoryPermissionStudent"]="N" ;
 $actionRows[5]["categoryPermissionParent"]="N" ;
 $actionRows[5]["categoryPermissionOther"]="N" ;
-?>
+
+$actionRows[6]["name"]="Reports - Subject" ;
+$actionRows[6]["precedence"]="2";
+$actionRows[6]["category"]="ARR" ;
+$actionRows[6]["description"]="Write subject reports" ;
+$actionRows[6]["URLList"]="index.php, subject.php" ;
+$actionRows[6]["entryURL"]="subject.php" ;
+$actionRows[6]["defaultPermissionAdmin"]="Y" ;
+$actionRows[6]["defaultPermissionTeacher"]="Y" ;
+$actionRows[6]["defaultPermissionStudent"]="N" ;
+$actionRows[6]["defaultPermissionParent"]="N" ;
+$actionRows[6]["defaultPermissionPublic"]="N" ;
+$actionRows[6]["defaultPermissionSupport"]="Y" ;
+$actionRows[6]["categoryPermissionStaff"]="Y" ;
+$actionRows[6]["categoryPermissionStudent"]="N" ;
+$actionRows[6]["categoryPermissionParent"]="N" ;
+$actionRows[6]["categoryPermissionOther"]="N" ;

@@ -53,13 +53,13 @@ class comp {
                                 <option></option>
                                 <?php
                                 while ($row = $rs->fetch()) {
-                                    ?>
-                                    <option value="<?php echo $row['reportID'] ?>"
-                                            <?php if ($reportID == $row['reportID'])
-                                                echo "selected='selected'" ?>>
-                                        <?php echo $row['reportName'] ?>
-                                    </option>
-                                    <?php
+                                    $selected = '';
+                                    if ($reportID == $row['reportID']) {
+                                        $selected = 'selected';
+                                    }
+                                    echo "<option value='".$row['reportID']."' $selected>";
+                                        echo $row['reportName'];
+                                    echo "</option>";
                                 }
                                 ?>
                             </select>

@@ -1,9 +1,11 @@
 <?php
-//$effortLabel = "Approach to learning";
 $_SESSION['max_term'] = 3;
 $_SESSION['numCols'] = 60;
 $_SESSION['archivePath'] = '/archive/reporting/';
+//$_SESSION['archiveWebPath'] = '/archive/reporting/';
+$_SESSION['archiveFilePath'] = $_SERVER['DOCUMENT_ROOT'].$_SESSION['archivePath'];
 
+date_default_timezone_set('Asia/Makassar');
 ini_set('error_log', 'logfile.txt');
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,13 +31,13 @@ function chooseReport($connection2, $classID, $reportID, $rollGroupID, $schoolYe
                         <option></option>
                         <?php
                         while ($row = $repList->fetch()) {
-                            ?>
-                            <option value="<?php echo $row['reportID'] ?>"
-                                   <?php if ($reportID == $row['reportID'])
-                                       echo "selected='selected'" ?>>
-                                <?php echo $row['reportName'] ?>
-                            </option>
-                            <?php
+                            $selected = '';
+                            if ($reportID == $row['reportID']) {
+                                $selected = 'selected';
+                            }
+                            echo "<option value='".$row['reportID']."' $selected>";
+                                echo $row['reportName'];
+                            echo "</option>";
                         }
                         ?>
                     </select>
@@ -79,18 +81,17 @@ function chooseRollGroup($connection2, $rollGroupID, $schoolYearID, $yearGroupID
             <form name="frm_class" method="post" action="">
                 <input type="hidden" name="yearGroupID" value="<?php echo $yearGroupID ?>" />
                 <input type="hidden" name="schoolYearID" value="<?php echo $schoolYearID ?>" />
-                <input type="hidden" name="studentID" value="<?php echo $studentID ?>" />
                 <select name="rollGroupID" onchange="this.form.submit();">
                     <option></option>
                     <?php
                     while ($row = $rs->fetch()) {
-                        ?>
-                        <option value="<?php echo $row['gibbonRollGroupID'] ?>"
-                                <?php if ($rollGroupID == $row['gibbonRollGroupID'])
-                                    echo "selected='selected'" ?>>
-                            <?php echo $row['nameShort'] ?>
-                        </option>
-                        <?php
+                        $selected = '';
+                        if ($rollGroupID == $row['gibbonRollGroupID']) {
+                            $selected = 'selected';
+                        }
+                        echo "<option value='".$row['gibbonRollGroupID']."' $selected>";
+                            echo $row['nameShort'];
+                        echo "</option>";
                     }
                     ?>
                 </select>
@@ -121,12 +122,16 @@ function chooseSchoolYear($connection2, $studentID, $reportID, $schoolYearID) {
                     <option></option>
                     <?php
                     $schoolYearList->execute();
-                    while ($row_schoolYearList = $schoolYearList->fetch()) { ?>
-                        <option value = "<?php echo $row_schoolYearList['gibbonSchoolYearID'] ?>"
-                            <?php if ($schoolYearID == $row_schoolYearList['gibbonSchoolYearID']) echo "selected='selected'"; ?>>
-                            <?php echo $row_schoolYearList['name'] ?>
-                         </option>
-                    <?php } ?>
+                    while ($row_schoolYearList = $schoolYearList->fetch()) {
+                        $selected = '';
+                        if ($schoolYearID == $row_schoolYearList['gibbonSchoolYearID']) {
+                            $selected = 'selected';
+                        }
+                        echo "<option value = '".$row_schoolYearList['gibbonSchoolYearID']."' $selected>";    
+                            echo $row_schoolYearList['name'];
+                         echo "</option>";
+                    } 
+                    ?>
                 </select>
             </form>
         </div>
@@ -156,13 +161,13 @@ function chooseYearGroup($connection2, $yearGroupID, $schoolYearID) {
                     <option></option>
                     <?php
                     while ($row = $yearGroupList->fetch()) {
-                        ?>
-                        <option value="<?php echo $row['gibbonYearGroupID'] ?>"
-                                <?php if ($yearGroupID == $row['gibbonYearGroupID'])
-                                        echo "selected='selected'" ?>>
-                            <?php echo $row['nameShort'] ?>
-                        </option>
-                        <?php
+                        $selected = '';
+                        if ($yearGroupID == $row['gibbonYearGroupID']) {
+                            $selected = 'selected';
+                        }
+                        echo "<option value='".$row['gibbonYearGroupID']."' $selected>";
+                            echo $row['nameShort'];
+                        echo "</option>";
                     }
                     ?>
                 </select>
@@ -631,12 +636,24 @@ function readCriteriaGrade($connection2, $studentID, $subjectID, $reportID) {
                 WHERE arrReportGrade.criteriaID = arrCriteria.criteriaID
                 AND reportID = :reportID
                 AND studentID = :studentID
-            ) AS gradeID
+            ) AS gradeID,
+            (
+                SELECT arrReportGrade.mark
+                FROM arrReportGrade
+                WHERE arrReportGrade.criteriaID = arrCriteria.criteriaID
+                AND reportID = :reportID
+                AND studentID = :studentID
+            ) AS mark,
+            (
+                SELECT arrReportGrade.percent
+                FROM arrReportGrade
+                WHERE arrReportGrade.criteriaID = arrCriteria.criteriaID
+                AND reportID = :reportID
+                AND studentID = :studentID
+            ) AS percent
             FROM arrCriteria
             WHERE subjectID = :subjectID
             ORDER BY criteriaOrder";
-        //print $sql;
-        //print_r($data);
         $rs = $connection2->prepare($sql);
         $rs->execute($data);
         return $rs;
@@ -664,22 +681,24 @@ function readReportDetail($connection2, $reportID) {
 function readReportList($connection2, $schoolYearID, $yearGroupID) {
     // read reports available for this year group
     try {
-        $data = array(
-            'schoolYearID' => $schoolYearID,
-            'yearGroupID' => $yearGroupID
-        );
-        $sql = "SELECT arrReport.reportID, reportName
+        //$data = array(
+        //    'schoolYearID' => $schoolYearID,
+        //    'yearGroupID' => $yearGroupID
+        //);
+        $sql = "SELECT DISTINCT arrReport.reportID, reportName
             FROM arrReport
             INNER JOIN arrReportAssign
             ON arrReport.reportID = arrReportAssign.reportID
-            WHERE arrReportAssign.schoolYearID = :schoolYearID
-            AND yearGroupID = :yearGroupID
-            AND assignStatus = 1
+            WHERE arrReportAssign.schoolYearID = $schoolYearID";
+        if (isset($yearGroupID)) {
+            $sql .= " AND yearGroupID in ( $yearGroupID )";
+        }
+        $sql .= " AND assignStatus = 1
             ORDER BY reportNum";
         //print $sql;
         //print_r($data);
         $rs  = $connection2->prepare($sql);
-        $rs->execute($data);
+        $rs->execute();
         return $rs;
     } catch(PDOException $e) {
         print "<div>" . $e->getMessage() . "</div>" ;
@@ -1038,7 +1057,7 @@ function trimCourseName($courseName) {
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-function showComment($fldComment, $comment, $charBarID, $maxChar, $numCharID, $numRows, $enabledState) {
+function showComment($fldComment, $comment, $charBarID, $maxChar, $numCharID, $numRows = 15, $numCols=80, $enabledState) {
     // show comment for edit or display
     // show number of characters entered and disable save if too long        
     showRepLength($comment, $maxChar, $charBarID, $numCharID);
@@ -1047,7 +1066,7 @@ function showComment($fldComment, $comment, $charBarID, $maxChar, $numCharID, $n
         <textarea
             name = "<?php echo $fldComment ?>"
             rows = "<?php echo $numRows ?>"
-            cols = "<?php echo $_SESSION['cols'] ?>"
+            cols = "<?php echo $numCols ?>"
             onkeyup = "checkEnter(this.value, <?php echo $maxChar ?>, 'submit', '<?php echo $numCharID ?>', '<?php echo $charBarID ?>');"
             class = "subtextbox"
             onclick = "notSaved('status');"
@@ -1060,7 +1079,7 @@ function showComment($fldComment, $comment, $charBarID, $maxChar, $numCharID, $n
 
 ////////////////////////////////////////////////////////////////////////////////
 function freemium($modpath) {
-    $path = $modpath.'/documents/gibbon_reporting_user_guide.pdf';
+    $path = $modpath.'/documents/gibbon_reporting_user_guide_v1.16.pdf';
     $freemium = "<div id='freemium'>";
         $freemium .= "<table class='tableNoBorder'>";
             $freemium .= "<tr>";

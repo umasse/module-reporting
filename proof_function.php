@@ -23,7 +23,7 @@ class proof {
     var $classTeacherID;
     var $yearGroupName;
 
-    function proof($guid, $connection2) {
+    function __construct($guid, $connection2) {
         // get value of selected year
 
         $this->classView    = $_SESSION[$guid]['classView'];
@@ -195,12 +195,12 @@ class proof {
         }
 
         // check completeness of report
-        //$complete = $this->reportComplete($connection2, $studentID);
+        //$complete = $thisreportComplete($connection2, $studentID);
 
         // show link
         echo "<div class = 'studlist'>";
             ?>
-            <a href = "#" style = "<?php echo $complete ?>;" onclick = "<?php echo $click ?>">
+            <a href = "#" style = "" onclick = "<?php echo $click ?>">
             <?php
             
             echo $name;
@@ -350,13 +350,13 @@ class proof {
                         <option></option>
                         <?php
                         while ($row = $rs->fetch()) {
-                            ?>
-                            <option value="<?php echo $row['gibbonRollGroupID'] ?>"
-                                    <?php if ($this->rollGroupID == $row['gibbonRollGroupID'])
-                                        echo "selected='selected'" ?>>
-                                <?php echo $row['nameShort'] ?>
-                            </option>
-                            <?php
+                            $selected = '';
+                            if ($this->rollGroupID == $row['gibbonRollGroupID']) {
+                                $selected = 'selected';
+                            }
+                            echo "<option value='".$row['gibbonRollGroupID']."' $selected>";
+                                echo $row['nameShort'];
+                            echo "</option>";
                         }
                         ?>
                     </select>
@@ -380,7 +380,7 @@ class proof {
             <textarea
                 name = "<?php echo $fld_comment ?>"
                 rows = "<?php echo $this->numRows ?>"
-                cols = "<?php echo $_SESSION['cols'] ?>"
+                cols = "<?php echo $this->numCols ?>"
                 onkeyup = "checkEnter(this.value, <?php echo $this->maxChar ?>, 'submit', '<?php echo $numCharID ?>', '<?php echo $charBarID ?>');"
                 class = "subtextbox"
                 onclick = "not_saved('status');"

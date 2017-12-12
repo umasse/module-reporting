@@ -97,22 +97,19 @@ class crit {
     }
 
     function save($connection2) {
-        $criteriaName = $_POST['criteriaName'];
-        $criteriaOrder = $_POST['criteriaOrder'];
+        $criteriaName = trim($_POST['criteriaName']);
 
         $data = array(
-            'criteriaName' => $criteriaName,
-            'criteriaOrder' => $criteriaOrder
+            'criteriaName' => $criteriaName
         );
-        $set = "SET criteriaName = :criteriaName,
-            criteriaOrder = :criteriaOrder";
+        $set = "SET criteriaName = :criteriaName";
         if ($this->criteriaID > 0) {
             $data['criteriaID'] = $this->criteriaID;
             $sql = "UPDATE arrCriteria $set WHERE criteriaID = :criteriaID";
         } else {
             $data['subjectID'] = $this->subjectID;
             $set .= ", subjectID = :subjectID";
-            $sql = "INSERT INTO arrCriteria $set";
+            $sql = "INSERT IGNORE INTO arrCriteria $set";
         }
         $rs = $connection2->prepare($sql);
         $ok = $rs->execute($data);
@@ -127,9 +124,6 @@ class crit {
             <td>
                 <input type='text' name='criteriaName' value='<?php echo $this->criteriaName ?>' size='40' />
             </td>
-            <td style='text-align:center'>
-                <input type='text' name='criteriaOrder' value='<?php echo $this->criteriaOrder ?>' size='3' />
-            </td>
             <td>
                 <input type='submit' name='save' value='Save' />
                 <input type='submit' name='cancel' value='Cancel' />
@@ -140,41 +134,44 @@ class crit {
 
     function mainform($guid, $connection2) {
         if ($this->yearGroupID > 0 && $this->subjectID > 0) {
-            $linkPath = $_SESSION[$guid]['absoluteURL'].'/index.php?q=/modules/'.$_SESSION[$guid]["module"].'/admin_criteria.php';
+            $path = $_SESSION[$guid]['absoluteURL']."/modules/".$_SESSION[$guid]["module"];
+            $modpath = $_SESSION[$guid]['absoluteURL'].'/index.php?q=/modules/'.$_SESSION[$guid]["module"];
+            $linkPath = $modpath.'/admin_criteria.php';
             $linkNew = $linkPath.
                     "&amp;subjectID=".$this->subjectID.
                     "&amp;yearGroupID=".$this->yearGroupID.
                     "&amp;schoolYearID=".$this->schoolYearID.
                     "&amp;mode=new";
-            $criteriaList = $this->readCriteriaList($connection2);
+            $this->criteriaList = $this->readCriteriaList($connection2);
+            
             ?>
             <div>&nbsp;</div>
-            <form name='frm_define' method='post' action=''>
+            <form id='frm_define' name='frm_define' method='post' action=''>
                 <input type='hidden' name='criteriaID' value='<?php echo $this->criteriaID ?>' />
                 <input type='hidden' name='subjectID' value='<?php echo $this->subjectID ?>' />
                 <input type='hidden' name='yearGroupID' value='<?php echo $this->yearGroupID ?>' />
-                <input type='hidden' name='schoolYearID' value='<?php echo $this->schoolYearID ?>' />
-                <p><a href='<?php echo $linkNew ?>'>Add new</a></p>
+                <input type='hidden' name='schoolYearID' id='schoolYearID' value='<?php echo $this->schoolYearID ?>' />
+                <div style='display:inline-block;margin-right:10px;'><a href='<?php echo $linkNew ?>'>Add new</a>  (drag to change order)</div>
+                <div style='display:inline-block;margin-right:10px;'><a href='#' id='copycrit'>Copy</a></div>
+                <div>Names must be unique</div>
                 <table class='mini' style='width:100%' id='critTable'>
                     <thead>
                         <tr>
                             <th style='width:55%;'>Criteria</th>
-                            <th style='width:20%'>Order</th>
                             <th style='width:25%;'>Action</th>
                         </tr>
                     </thead>
                     
                     <tbody>
                     <?php
-                    if ($criteriaList->rowCount() == 0 || $this->mode == 'new') {
+                    if ($this->criteriaList->rowCount() == 0 || $this->mode == 'new') {
                         $this->criteriaName = '';
                         $this->criteriaOrder = '';
                         $this->formCriteria();
                     }
-                    while ($row = $criteriaList->fetch()) {
+                    while ($row = $this->criteriaList->fetch()) {
                         if ($this->criteriaID == $row['criteriaID']) {
                             $this->criteriaName = $row['criteriaName'];
-                            $this->criteriaOrder = $row['criteriaOrder'];
                             $this->formCriteria();
                         } else {
                             $linkEdit = $linkPath.
@@ -191,8 +188,12 @@ class crit {
                                 "&amp;mode=delete\"";
                             ?>
                             <tr class='crititem'>
-                                <td><?php echo $row['criteriaName'] ?></td>
-                                <td style='text-align:center'><?php echo $row['criteriaOrder'] ?></td>
+                                <td>
+                                    <?php 
+                                    echo "<input type='hidden' name='rowCriteriaID' value='".$row['criteriaID']."' />";
+                                    echo $row['criteriaName'] 
+                                    ?>
+                                </td>
                                 <td style='text-align:center'>
                                     <a href='<?php echo $linkEdit ?>'>Edit</a> <a href='#' onclick='if (confirm("<?php echo $messageDelete ?>")) <?php echo $linkDelete ?>'>Delete</a>
                                 </td>
@@ -204,6 +205,112 @@ class crit {
                     </tbody>
                 </table>
             </form>
+            
+            <p>&nbsp;</p>
+            <div id='copyCriteria' style='background-color: #eeeeee;padding:4px;display:none;'>
+                <form id='copyCriteriaForm' method='post'>
+                    <?php
+                    $this->copyCriteriaList($connection2);
+                    //$this->copyReportList($connection2);
+                    $this->copyYearGroupList($connection2);
+                    $this->copySubjectList($connection2);
+                    ?>
+                    <div>
+                    <button type='button' id='copySubmit'>Copy</button>
+                    </div>
+                </form>
+            </div>
+            <p>&nbsp;</p>
+            
+            <script>
+                var path = '<?php echo $path ?>';
+                var orderpath = path + "/admin_criteria_ajax.php"; 
+                $('#critTable tbody').sortable({
+                    // save order after dragging to new position
+                    stop: function() {
+                        var formData = $('#frm_define').serialize();
+                        $.ajax({
+                            url: orderpath,
+                            data: {
+                                formData: formData
+                            },
+                            type: 'POST',
+                            success: function(data) {
+                                console.log(data);
+                            }
+                        });
+                    }
+                });
+                
+                // preserve table width when dragging
+                $('td').each(function(){
+                    $(this).css('width', $(this).width() +'px');
+                });
+                
+                $('#copycrit').click(function() {
+                    $('#copyCriteria').show();
+                });
+                
+                $('.criteriaListAll').click(function() {
+                    checkAll('criteriaList', $(this).prop('checked'));
+                });
+                /*
+                $('.reportListAll').click(function() {
+                    checkAll('reportList', $(this).prop('checked'));
+                });
+                
+                $('.yearGroupListAll').click(function() {
+                    checkAll('yearGroupList', $(this).prop('checked'));
+                });
+                */
+                $('.subjectListAll').click(function() {
+                    checkAll('subjectList', $(this).prop('checked'));
+                });
+                
+                // year group changed so change subject list
+                $('#yearGroupIDcopy').change(function() {
+                    orderpath = path + "/admin_criteria_subject_ajax.php",
+                    $.ajax({
+                        url: orderpath,
+                        data: {
+                            yearGroupID: $('#yearGroupIDcopy').val(),
+                            schoolYearID: $('#schoolYearID').val()
+                        },
+                        type: 'POST',
+                        dataType: 'JSON',
+                        success: function(data) {
+                            console.log(data);
+                            var html = '';
+                            $.each(data.subjectList, function(i, sub) {
+                                html += "<div>";
+                                    html += "<input type='checkbox' class='subjectList' name='subjectIDcopy' value='" + sub.subjectID + "' checked /> ";
+                                    html += sub.subjectName;
+                                html += "</div>";
+                            });
+                            $('#subjectList').html(html);
+                        }
+                    });
+                });
+                
+                // submitted now copy criteria to seleted targets
+                $('#copySubmit').click(function() {
+                    // copy criteria to selected targets
+                    var formData = $('#copyCriteriaForm').serialize();
+                    //console.log(formData);
+                    orderpath = path + "/admin_criteria_copy_ajax.php",
+                    $.ajax({
+                        url: orderpath,
+                        data: {
+                            formData: formData
+                        },
+                        type: 'POST',
+                        success: function(data) {
+                            console.log(data);
+                            alert('Copied');
+                        }
+                    });
+                });
+            </script>
             <?php
         }
         ?>
@@ -229,14 +336,14 @@ class crit {
                             <?php
                             if ($subjectList->rowCount() > 0) {
                                 while ($row = $subjectList->fetch()) {
+                                    $selected = '';
+                                    if ($this->subjectID == $row['subjectID']) {
+                                        $selected = 'selected';
+                                    }
                                     $subjectName = trimCourseName($row['subjectName']);
-                                    ?>
-                                    <option value="<?php echo $row['subjectID'] ?>"
-                                            <?php if ($this->subjectID == $row['subjectID'])
-                                                    echo "selected='selected'" ?>>
-                                        <?php echo $subjectName ?>
-                                    </option>
-                                    <?php
+                                    echo "<option value='".$row['subjectID']."' $selected>";
+                                        echo trimCourseName($row['subjectName']);
+                                    echo "</option>";
                                 }
                             }
                             ?>
@@ -265,11 +372,94 @@ class crit {
             WHERE gibbonSchoolYearID = :schoolYearID
             AND gibbonYearGroupIDList LIKE :yearGroupID
             AND reportable = 'Y'";
-        //print $sql;
-        //print_r($data);
         $rs = $connection2->prepare($sql);
         $rs->execute($data);
         return $rs;
+    }
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    function copySubjectList($connection2) {
+        $subjectList = $this->readSubjectlist($connection2);
+        ?>
+        <div style='display:inline-block;vertical-align:top;'>
+            <div><strong>Select subjects to copy to</strong></div>
+            <?php
+            echo "<div style='margin-bottom:4px;'><input type='checkbox' class='subjectListAll' value='1' /> <em>Check all</em></div>";
+            echo "<div id='subjectList'>";
+                while ($row = $subjectList->fetch()) {
+                    echo "<div>";
+                        echo "<input type='checkbox' class='subjectList' name='subjectIDcopy' value='".$row['subjectID']."' checked /> ";
+                        echo $row['subjectName'];
+                    echo "</div>";
+                }
+            echo "</div>";
+            ?>
+        </div>
+        <?php
+    }
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    function copyYearGroupList($connection2) {
+        $yearGroupList = readYeargroup($connection2);
+        ?>
+        <div style='display:inline-block;margin-right:10px;vertical-align:top;'>
+            <div><strong>Select year group to copy to</strong></div>
+            <?php
+            echo "<select name='yearGroupIDcopy' id='yearGroupIDcopy'>";
+                while ($row = $yearGroupList->fetch()) {
+                    echo "<option value='".$row['gibbonYearGroupID']."'>";
+                        echo $row['name'];
+                    echo "</option>";
+                }
+            echo "</select>";
+            ?>
+        </div>
+        <?php
+    }
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    /*
+    ////////////////////////////////////////////////////////////////////////////////
+    function copyReportList($connection2) {
+        $reportList = readReport($connection2, $this->schoolYearID);
+        ?>
+        <div style='display:inline-block;margin-right:10px;vertical-align:top;'>
+            <div><strong>Select reports to copy to</strong></div>
+            <?php
+            echo "<div style='margin-bottom:4px;'><input type='checkbox' class='reportListAll' value='1' /> <em>Check all</em></div>";
+            while ($row = $reportList->fetch()) {
+                echo "<div>";
+                    echo "<input type='checkbox' class='reportList' name='reportIDcopy' value='".$row['reportID']."' checked /> ";
+                    echo $row['reportName'];
+                echo "</div>";
+            }
+            ?>
+        </div>
+        <?php
+    }
+    ////////////////////////////////////////////////////////////////////////////////
+    */
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    function copyCriteriaList($connection2) {
+        ?>
+        <div style='display:inline-block;margin-right:10px;vertical-align:top;'>
+            <div><strong>Select criteria to copy</strong></div>
+            <?php
+            echo "<div style='margin-bottom:4px;'><input type='checkbox' class='criteriaListAll' value='1' /> <em>Check all</em></div>";
+            $this->criteriaList->execute();
+            while ($row = $this->criteriaList->fetch()) {
+                echo "<div>";
+                    echo "<input type='checkbox' class='criteriaList' name='criteriaIDcopy' value='".$row['criteriaID']."' checked /> ";
+                    echo $row['criteriaName'];
+                echo "</div>";
+            }
+            ?>
+            <p>&nbsp;</p>
+        </div>
+        <?php
     }
     ////////////////////////////////////////////////////////////////////////////////
 }

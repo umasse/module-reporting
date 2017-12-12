@@ -2,7 +2,7 @@
 session_start();
 include  "../../config.php";
 include "../../functions.php";
-include "../attendance/moduleFunctions.php";
+include "../Attendance/moduleFunctions.php";
 
 //New PDO DB connection
 try {
@@ -28,19 +28,22 @@ if (1==2) {
     //include "./pdf_function.php" ;
     include "./function.php";
 
-    $root = "../..";
-    include $root."/lib/tcpdf/tcpdf.php";
+    //$root = "../..";
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    require_once $root."/lib/tcpdf-6.2/tcpdf.php";
     include "./pdf_create_function.php";
     
 
     setSessionVariables($guid, $connection2);
 
-    $setpdf = new setpdf($guid, $connection2);
+    $setpdf = new createpdf($guid, $connection2);
+    
     $reportSection = $setpdf->readReportSectionList($connection2);
     
     // check folder exists
     $setpdf->checkFolder();
-    $path = '../..'.$_SESSION['archivePath'].$setpdf->schoolYearName.'/';
+    //$path = '../..'.$_SESSION['archivePath'].$setpdf->schoolYearName.'/';
+    $path = $_SESSION['archiveFilePath'].$setpdf->schoolYearName.'/';
 
     // go through class list to see which ones need to be printed
     //$rollGroupList = $setpdf->rollGroupList;
@@ -52,6 +55,18 @@ if (1==2) {
         $setpdf->firstName = $row['firstName'];
         $setpdf->preferredName = $row['preferredName'];
         $setpdf->surname = $row['surname'];
+        $setpdf->rollOrder = $row['rollOrder'];
+        $setpdf->studentEmail = $row['email'];
+        if (! empty($row['dateStart']) ) {
+            $setpdf->studentDateStart = $row['dateStart'];
+        } else {
+            $setpdf->studentDateStart = "2000-01-01";
+        }
+        if (! empty($row['dateEnd']) ) {
+            $setpdf->studentDateEnd = $row['dateEnd'];
+        } else {
+            $setpdf->studentDateEnd = "2099-01-01";
+        }
         $setpdf->studentAbrName = str_replace("'", "", $row['surname'].substr($row['firstName'], 0, 1));
         $dob = $row['dob'];
         if ($dob != '' && substr($dob, 0, 4) != '0000') {
@@ -65,19 +80,25 @@ if (1==2) {
                 $setpdf->schoolYearName.'-'.
                 $setpdf->yearGroupName.'-'.
                 $setpdf->term.'-'.
-                intval($setpdf->studentID).'-'.
-                $setpdf->studentAbrName.".pdf";
+                $setpdf->studentAbrName.'-'.
+                intval($setpdf->studentID).
+                ".pdf";
         $fileName = $path.$reportName;
+
+        $debug_dump = false;
+        $debug_html = '<html><head></head><body>';
 
         ////////////////////////////////////////////////////////////////////
         // start pdf file
         ////////////////////////////////////////////////////////////////////
-        $pdf = new MYPDF ('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new MYPDF ($setpdf->pageOrientation, 'mm', 'A4', true, 'UTF-8', false);
         // set margins
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->SetHeaderMargin($setpdf->topMargin);
+        $pdf->SetFooterMargin($setpdf->footerMargin);
+        $pdf->loadCustomFonts();
         $pdf->AddPage();
+
 
         ////////////////////////////////////////////////////////////////////
         // subject report
@@ -87,17 +108,51 @@ if (1==2) {
             $setpdf->sectionID = $rowSection['sectionID'];
             $sectionTypeID = $rowSection['sectionType'];
             $sectionTypeName = $rowSection['sectionTypeName'];
+            // Database table arrReportSectionType needs to match this
+            // 1	Text
+            // 2	Subject (row)
+            // 3	Subject (column)
+            // 4	Pastoral
+            // 5	Page Break
+            // 6    Subject (Row-NonEmpty-Att)
+            // 7    Attendance (Term)
+            //
+            // module.js sectionTypeObj needs to match this
+            //var sectionTypeObj = {
+                //'1': 'Text',
+                //'2': 'Subject (row)',
+                //'3': 'Subject (column)',
+                //'4': 'Pastoral',
+                //'5': 'Page Break',
+                //'6': 'Subject (Row-NonEmpty-Att)',
+                //'7': 'Attendance (Term)'
+            //}
+            //
+            // Methods for each section type need to be created in pdf_create_function.php
+
             switch ($sectionTypeName) {
                 case 'Text':
-                    $setpdf->textSection($pdf);
+                    $debug_html.=$setpdf->textSection($pdf);
                     break;
                 
-                case 'Subject':
-                    $setpdf->subjectReport($pdf);
+                case 'Subject (row)':
+                    $debug_html.=$setpdf->subjectReportRow($pdf);
                     break;
 
+                case 'Subject (Row-NonEmpty-Att)':
+                    $debug_html.=$setpdf->subjectReportRowNonEmptyAtt($pdf);
+                    break;
+
+                case 'Subject (column)':
+                    $debug_html.=$setpdf->subjectReportColumn($pdf);
+                    break;
+                
                 case 'Pastoral':
-                    $setpdf->pastoralReport($pdf);
+                    $debug_html.=$setpdf->pastoralReport($pdf);
+                    break;
+                
+                case 'Attendance (Term)':
+                    $debug_html.=$setpdf->attendanceTermReport($pdf);
                     break;
                 
                 case 'Page Break':
@@ -109,6 +164,11 @@ if (1==2) {
         // output to PDF
         ////////////////////////////////////////////////////////////////////
         $pdf->Output($fileName, 'F');
+
+        if ($debug_dump) {
+            $debug_html.="</body></html>";
+            file_put_contents($fileName.'.html', $debug_html);
+        }
 
         ////////////////////////////////////////////////////////////////////
         // update history

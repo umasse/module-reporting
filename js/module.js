@@ -108,9 +108,40 @@ function stopRKey(evt) {
 ////////////////////////////////////////////////////////////////////////////////
 // template design
 ////////////////////////////////////////////////////////////////////////////////
-var sectionTypeList = new Array("", "Text", "Subject", "Pastoral", "Page Break");
+
+// Database table arrReportSectionType needs to match this
+// 1	Text
+// 2	Subject (row)
+// 3	Subject (column)
+// 4	Pastoral
+// 5	Page Break
+// 6    Subject (Row-NonEmpty-Att)
+var sectionTypeObj = {
+    '1': 'Text',
+    '2': 'Subject (row)',
+    '3': 'Subject (column)',
+    '4': 'Pastoral',
+    '5': 'Page Break',
+    '6': 'Subject (Row-NonEmpty-Att)',
+    '7': 'Attendance (Term)'
+}
+var sectionTypeIDs = Object.keys(sectionTypeObj).sort()
+var sectionTypeNames = Object.values(sectionTypeObj).sort()
+var sectionTypeIDNameLookup = {};
+// Auto-create object with Key:Value reversed for ease of lookups
+for (var i = 0, len = sectionTypeIDs.length; i < len; i++) {
+    tmpID = sectionTypeIDs[i]
+    tmpValue = sectionTypeObj[tmpID]
+    sectionTypeIDNameLookup[tmpValue] = tmpID;
+}
+
+//var sectionTypeListID = new Array("", "1", "2", "6", "3", "4", "5");
+//var sectionTypeList = new Array("", "Text", "Subject (Row)", "Subject (Row-NonEmpty-Att)", "Subject (Column)", "Pastoral", "Page Break");
+
 var insertList = new Array(
-        "Official name", "First name", "Preferred name", "Surname", "Class"
+        "Official name", "First name", "Preferred name", "Surname", "Class", "Roll Number",
+        "School Year", "Year Group", "Classname Short", "Student ID", "Roll Group Teacher",
+        "Student DOB", "Student email"
     );
 // sections may be loaded and more added
 // numitem allows each section to be differentiated even if they have yet to be saved and have no ID
@@ -164,7 +195,7 @@ $(document).ready(function() {
     }
 });
 
-function sectionRow(sectionID, type, sectionType, numItem, content) {
+function sectionRow(currentSectionID, currentSectionTypeID, currentContent) {
     // create HTML for one section
     var html = "";
     var idContent = 'content' + numItem;
@@ -176,20 +207,20 @@ function sectionRow(sectionID, type, sectionType, numItem, content) {
             html += "<img src='" + modpath + "/images/drag.png' alt='drag' height='16' />";
         html += "</td>";
         html += "<td class='col2'>";
-            html += "<div style='float:left'>" + type + "</div>";
+            html += "<div style='float:left'>" + sectionTypeObj[currentSectionTypeID] + "</div>";
             html += "<div class='sectionAction'>";
-                if (sectionType === '1' && sectionID > 0) {
+                if (currentSectionTypeID === sectionTypeIDNameLookup['Text'] && currentSectionID > 0) {
                     // for now just edit text sections
                     html += "<a href='#' class='sectionEdit'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
                 }
                 html += "<a href='#' class='sectionDelete'>Delete</a>";
-                html += "<input type='hidden' class='sectionID' name='sectionID' id='" + idSection + "' value='" + sectionID + "' />";
-                html += "<input type='hidden' class='sectionType' name='sectionType' id='" + idSectionType + "' value='" + sectionType + "' />";
+                html += "<input type='hidden' class='sectionID' name='sectionID' id='" + idSection + "' value='" + currentSectionID + "' />";
+                html += "<input type='hidden' class='sectionType' name='sectionType' id='" + idSectionType + "' value='" + currentSectionTypeID + "' />";
             html += "</div>";
             html += "<div style='clear:both'></div>";
             html += "<div id='" + idContent + "'>";
-            if (content !== null) {
-                html += content;
+            if (currentContent !== null) {
+                html += currentContent;
             }
             html += "</div>";
         html += "</td>";
@@ -209,7 +240,7 @@ function loadData(reportID) {
         type: 'POST',
         dataType: 'json',
         success: function (data) {
-            //console.log(data);
+            console.log(data);
             var html = "";
             html += "<tr>";
                 html += "<th>Order</th>";
@@ -218,11 +249,10 @@ function loadData(reportID) {
             $('#template_table thead').html(html);
             
             if (data.section.length > 0) {
-                var numItem = 0;
                 var html = "";
                 $.each(data.section, function(i, sec) {
                     numItem++;
-                    html += sectionRow(sec.sectionID, sectionTypeList[sec.sectionType], sec.sectionType, numItem, sec.sectionContent);
+                    html += sectionRow(sec.sectionID, sec.sectionType, sec.sectionContent);
                 });         
                 $('#template_table tbody').html(html);
                 actionButtons(reportID);
@@ -245,13 +275,14 @@ function actionButtons(reportID) {
         var idSection = 'section' + id;
         var sectionID = $('#'+idSection).val(); // sectionID, could be null
         var idSectionType = 'sectionType' + id;
-        var sectionType = parseInt($('#'+idSectionType).val());
+        //var sectionType = parseInt($('#'+idSectionType).val());
+        var sectionType = $('#'+idSectionType).val();
         var idContent = "content" + id;
         var html = "";
         var data = "";
         
         switch (sectionType) {
-            case 1:
+            case sectionTypeIDNameLookup["Text"]:
                 // type is text
                 if (sectionID > 0) {
                     // has already been saved so read details
@@ -278,7 +309,7 @@ function actionButtons(reportID) {
                 
                 toggleButtons(true);
                 
-                tinymce.init({
+                tinyMCE.init({
                     selector: "#sectionContent",
                     width: '100%',
                     menubar: false,
@@ -316,7 +347,8 @@ function actionButtons(reportID) {
                 });
 
                 $('#form_cancel_btn').click(function() {
-                    $('#sectionEdit').css({'display': 'none'});
+                    //$('#sectionEdit').css({'display': 'none'});
+                    $('#sectionEdit').hide();
                     toggleButtons(false);
                 });
                 
@@ -325,6 +357,7 @@ function actionButtons(reportID) {
                     tinyMCE.execCommand('mceInsertContent', false, item);return false;
                 });
 
+                tinyMCE.activeEditor.setContent(data);
                 
                 break;
                 
@@ -357,11 +390,14 @@ function selectSectionType(reportID) {
     // show list of section types that can be added
     if (reportID > 0) {
         var html = "<div id='sectionTypePanel'>Insert: ";
-        for (var i=1; i<sectionTypeList.length; i++) {
-            html +=  "<a href='#' class='tempinsert' id='" + i + "'>";
-                html += sectionTypeList[i];
+        for (var i=0; i<sectionTypeNames.length; i++) {
+            html +=  "<a href='#' class='tempinsert' id='" + sectionTypeIDNameLookup[sectionTypeNames[i]] + "'>";
+                html += sectionTypeNames[i];
             html += "</a>";
-            html += "&nbsp;&nbsp;|&nbsp;&nbsp;";
+            if ( i < sectionTypeNames.length - 1 ) {
+                // Last one, don't put the separator
+                html += "&nbsp;&nbsp;|&nbsp;&nbsp;";
+            }
         }
         html += "</div>";
         html += "<div><button class='button' id='save_btn'>Save</button> Save list of sections, types and the order in which they should be displayed</div>";
@@ -369,12 +405,11 @@ function selectSectionType(reportID) {
         
         // insert new section
         $('.tempinsert').click(function() {
-            var type = $(this).html();
-            var sectionType = $(this).attr('id');
-            var reportID = $('#reportID').val();
+            //var type = $(this).html();
+            var newSectionTypeID = $(this).attr('id');
+            //var currentReportID = $('#reportID').val();
             numItem++;
-            html = sectionRow("", sectionTypeList[sectionType], sectionType, numItem, "");
-
+            html = sectionRow("", newSectionTypeID, "");
             $('#template_table tbody').append(html);
 
             actionButtons(reportID);
@@ -440,5 +475,17 @@ function caretPos(el)
     	pos = el.selectionStart;
 
     return pos;
+}
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+function copyCriteria() {
+    var subjectID
+}
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+function checkAll(myClass, status) {
+    $('.' + myClass).prop('checked', status);
 }
 ////////////////////////////////////////////////////////////////////////////////

@@ -71,7 +71,7 @@ function getMode() {
 function readReport($connection2, $schoolYearID) {
     // read list of all reports for selected year
     $data = array('schoolYearID' => $schoolYearID);
-    $sql = "SELECT reportID, schoolYearID, reportName, reportNum, reportOrder, 
+    $sql = "SELECT reportID, schoolYearID, reportName, reportNum, reportOrder, orientation, 
         gradeScale, gibbonScale.nameShort, gibbonScale.usage
         FROM arrReport
         LEFT JOIN gibbonScale

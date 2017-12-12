@@ -43,6 +43,7 @@ class def {
                 $this->mode = '';
             }
         }
+        $this->orientationList = array('', 'Portrait', 'Landscape');
     }
     ////////////////////////////////////////////////////////////////////////////
 
@@ -60,6 +61,7 @@ class def {
         $reportName = $_POST['reportName'];
         $reportNum = $_POST['reportNum'];
         $gradeScale = $_POST['gradeScale'];
+        $orientation = $_POST['orientation'];
         
         // check values are valid
         $ok = true;
@@ -74,12 +76,14 @@ class def {
                 "reportName" => $reportName,
                 "reportNum" => $reportNum,
                 "gradeScale" => $gradeScale,
+                "orientation" => $orientation
             );
 
             // values to update
             $set = "SET reportName = :reportName,
                 reportNum = :reportNum,
-                gradeScale = :gradeScale";
+                gradeScale = :gradeScale,
+                orientation = :orientation";
 
             if ($this->reportID > 0) {
                 // already exists so update
@@ -137,6 +141,21 @@ class def {
                     ?>
                 </select>
             </td>
+            <td>
+                <select name='orientation'>
+                    <?php
+                    for ($i=1; $i<count($this->orientationList); $i++) {
+                        ?>
+                        <option value='<?php echo $i ?>'
+                            <?php if ($i == $this->orientation)
+                                echo "selected='selected'"; ?>>
+                            <?php echo $this->orientationList[$i] ?>
+                        </option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </td>
             <td style='text-align:center'>
                 <input type='submit' name='save' value='Save' />
                 <input type='submit' name='cancel' value='Cancel' />
@@ -156,8 +175,9 @@ class def {
             <table class='mini' style='width:100%'>
                 <tr>
                     <th style='width:25%;'>Report Name</th>
-                    <th style='width:10%'>Term</th>
+                    <th style='width:8%'>Term</th>
                     <th style='width:35%'>Grade Scale</th>
+                    <th style='width:12%'>Orientation</th>
                     <th style='width:20%'>Action</th>
                 </tr>
 
@@ -169,6 +189,7 @@ class def {
                     $this->reportName = '';
                     $this->reportNum = '';
                     $this->gradeScale = '';
+                    $this->orientation = 1;
                     $this->formDefine();
                 }
 
@@ -177,6 +198,7 @@ class def {
                         $this->reportName = $row['reportName'];
                         $this->reportNum = $row['reportNum'];
                         $this->gradeScale = $row['gradeScale'];
+                        $this->orientation = $row['orientation'];
                         $this->formDefine();
                     } else {
                         $linkEdit = $linkPath.
@@ -185,16 +207,19 @@ class def {
                         $messageDelete = "WARNING All reports associated with this will be lost.  Delete ".$row['reportName']."?";
                         $linkDelete = "window.location = \"$linkPath&amp;reportID=".$row['reportID'].
                                 "&amp;mode=delete\"";
-                        ?>
-                        <tr>
-                            <td><?php echo $row['reportName'] ?></td>
-                            <td style='text-align:center'><?php echo $row['reportNum'] ?></td>
-                            <td><?php echo $row['nameShort'].' ('.$row['usage'].')' ?></td>
-                            <td style='text-align:center'>
-                                <a href='<?php echo $linkEdit ?>'>Edit</a> <a href='#' onclick='if (confirm("<?php echo $messageDelete ?>")) <?php echo $linkDelete ?>'>Delete</a>
-                            </td>
-                        </tr>
-                        <?php
+                        
+                        echo "<tr>";
+                            echo "<td>".$row['reportName']."</td>";
+                            echo "<td style='text-align:center'>".$row['reportNum']."</td>";
+                            echo "<td>";
+                                echo $row['nameShort']." (".$row['usage'].")";
+                            echo "</td>";
+                            echo "<td>".$this->orientationList[$row['orientation']]."</td>";
+                            echo "<td style='text-align:center'>";
+                                echo "<a href='$linkEdit'>Edit</a> <a href='#' onclick='if (confirm(\"$messageDelete\")) $linkDelete'>Delete</a>";
+                            echo "</td>";
+                        echo "</tr>";
+                        
                     }
                 }
                 ?>

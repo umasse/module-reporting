@@ -23,7 +23,7 @@ class pastoral {
     var $classTeacherID;
     var $yearGroupName;
 
-    function pastoral($guid, $connection2) {
+    function __construct($guid, $connection2) {
         // get value of selected year
 
         $this->classView    = $_SESSION[$guid]['classView'];
@@ -388,13 +388,12 @@ class pastoral {
                         <option></option>
                         <?php
                         while ($row = $rs->fetch()) {
-                            ?>
-                            <option value="<?php echo $row['gibbonRollGroupID'] ?>"
-                                    <?php if ($this->rollGroupID == $row['gibbonRollGroupID'])
-                                        echo "selected='selected'" ?>>
-                                <?php echo $row['nameShort'] ?>
-                            </option>
-                            <?php
+                            if ($this->rollGroupID == $row['gibbonRollGroupID']) {
+                                $selected = 'selected';
+                            }
+                            echo "<option value='".$row['gibbonRollGroupID']."' $selected>";
+                                echo $row['nameShort'];
+                            echo "</option>";
                         }
                         ?>
                     </select>
@@ -456,7 +455,7 @@ class pastoral {
         
         echo "<div style = 'float:left;'>"; // the report
             //$this->showComment($fldComment, $comment, $charBarID, $numCharID);
-            showComment($fldComment, $comment, $charBarID, $this->maxChar, $numCharID, $this->numRows, $this->enabledState);
+            showComment($fldComment, $comment, $charBarID, $this->maxChar, $numCharID, $this->numRows, $this->numCols, $this->enabledState);
         echo "</div>";
 
         echo "<div style = 'float:left;width:10px;'>&nbsp;</div>"; // spacer between report and photo

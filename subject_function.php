@@ -11,7 +11,7 @@ class subrep {
     var $yearGroupID;
 
 
-    function subrep($guid, $connection2) {
+    function __construct($guid, $connection2) {
 
         $this->classView    = $_SESSION[$guid]['classView'];
         $this->studView     = $_SESSION[$guid]['studView'];
@@ -381,20 +381,30 @@ class subrep {
                 $criteriaList->execute();
                 while ($row = $criteriaList->fetch()) {
                     $fldID = "crit".$studentID.'_'.$row['criteriaID'];
+                    $markID = "mark".$studentID.'_'.$row['criteriaID'];
+                    $percentID = "percent".$studentID.'_'.$row['criteriaID'];
                     $gradeID = $_POST[$fldID];
+                    $mark = $_POST[$markID];
+                    $percent = $_POST[$percentID];
                     $data = array(
                         'reportID' => $this->reportID,
                         'criteriaID' => $row['criteriaID'],
                         'studentID' => $studentID,
-                        'gradeID' => $gradeID
+                        'gradeID' => $gradeID,
+                        'mark' => $mark,
+                        'percent' => $percent
                     );
                     $sql = "INSERT INTO arrReportGrade
                         SET reportID = :reportID,
                         studentID = :studentID,
                         criteriaID = :criteriaID,
-                        gradeID = :gradeID
+                        gradeID = :gradeID,
+                        mark = :mark,
+                        percent = :percent
                         ON DUPLICATE KEY UPDATE
-                        gradeID = :gradeID";
+                        gradeID = :gradeID,
+                        mark = :mark,
+                        percent = :percent";
                     $rs = $connection2->prepare($sql);
                     $result = $rs->execute($data);
                     if (!$result) {
@@ -424,26 +434,19 @@ class subrep {
                 <div style = "float:left;width:70%;">
                     <form name = "classid" method = "post" action = "">
                         <input type = "hidden" name = "rep" value = "subject" />
-                        <input type = "hidden" name = "teacherID" value = "<?php echo $this->teacherID ?>" />
-                        <input type = "hidden" name = "status" value = "0" />
-                        <input type = "hidden" name = "reportID" value = "<?php echo $this->reportID ?>" />
-                        <input type = "hidden" name = "studentID" value = "" />
-                        <input type = "hidden" name = "view" value = "<?php echo $this->view ?>" />
                         <input type = "hidden" name = "schoolYearID" value = "<?php echo $this->schoolYearID ?>" />
+                        <input type = "hidden" name = "teacherID" value = "<?php echo $this->teacherID ?>" />
+                        <input type = "hidden" name = "reportID" value = "" />
+                        <input type = "hidden" name = "status" value = "0" />
+                        <input type = "hidden" name = "view" value = "<?php echo $this->view ?>" />
                         <select name = "classID" style = "float:left;width:60%;" onchange = "if (checkForEdit('status')) this.form.submit();">
                             <option></option>
                             <?php
                             while ($row = $classesList->fetch()) { // for each class
-                                ?>
-                                <option value = "<?php echo $row['gibbonCourseClassID'] ?>"
-                                    <?php
-                                    if ($this->classID == $row['gibbonCourseClassID']) {
-                                            echo "selected='selected'";
-                                    }
-                                    ?>>
-                                    <?php echo $row['course'].'.'.$row['class'] ?>
-                                </option>
-                                <?php
+                                $selected = ($this->classID == $row['gibbonCourseClassID']) ? 'selected' : '';
+                                echo "<option value='".$row['gibbonCourseClassID']."' $selected>";
+                                    echo $row['course'].'.'.$row['class'];
+                                echo "</option>";
                             }
                             ?>
                          </select>
@@ -503,22 +506,16 @@ class subrep {
                     <input type = "hidden" name = "reportID" value = "" />
                     <input type = "hidden" name = "status" value = "0" />
                     <input type = "hidden" name = "schoolYearID" value = "<?php echo $this->schoolYearID ?>" />
+                    <input type = "hidden" name = "view" value = "<?php echo $this->view ?>" />
                     <select name = "teacherID" style = "float:left;width:95%;" onchange = "if (checkForEdit('status')) this.form.submit();">
                         <option></option>
                         <?php
                         $teacherList = $this->teacherList;
                         while ($row = $teacherList->fetch()) {
-                            ?>
-                            <option value = "<?php echo $row['gibbonPersonID'] ?>"
-                                <?php
-                                // select current teacher if there is one
-                                if ($this->teacherID == $row['gibbonPersonID']) {
-                                    echo "selected='selected'";
-                                }
-                                ?>>
-                                <?php echo $row['surname'].', '.$row['preferredName']; ?>
-                            </option>
-                            <?php
+                            $selected = ($this->teacherID == $row['gibbonPersonID']) ? 'selected' : '';
+                            echo "<option value='".$row['gibbonPersonID']."' $selected>";
+                                echo $row['surname'].', '.$row['preferredName'];
+                            echo "</option>";
                         }
                         ?>
                     </select>
@@ -542,13 +539,13 @@ class subrep {
             $gradeset = $this->gradeList;
             $gradeset->execute();
             while ($row = $gradeset->fetch()) {
-                ?>
-                <option value="<?php echo $row['gibbonScaleGradeID'] ?>"
-                        <?php if ($gradeID == $row['gibbonScaleGradeID'])
-                            echo "selected='selected'" ?>>
-                    <?php echo $row['value'] ?>
-                </option>
-                <?php
+                $selected = '';
+                if ($gradeID == $row['gibbonScaleGradeID']) {
+                    $selected = 'selected';
+                }
+                echo "<option value='".$row['gibbonScaleGradeID']."' $selected >";
+                    echo $row['value'];
+                echo "</option>";
             }
             ?>
         </select>
@@ -692,13 +689,23 @@ class subrep {
                     echo "<table>";
                         echo "<tr>";
                             echo "<th style='width:300px;'>Criteria</th>";
-                            echo "<th style='width:150px;'>Grade</th>";
+                            echo "<th style='width:50px;'>Mark</th>";
+                            echo "<th style='width:50px;'>Percent</th>";
+                            echo "<th style='width:50px;'>Grade</th>";
                         echo "</tr>";
 
                         while ($row = $criteriagradelist->fetch()) {
                             $fldID = "crit".$studentID.'_'.$row['criteriaID'];
+                            $markID = "mark".$studentID.'_'.$row['criteriaID'];
+                            $percentID = "percent".$studentID.'_'.$row['criteriaID'];
                             echo "<tr>";
                                 echo "<td>".$row['criteriaName']."</td>";
+                                echo "<td>";
+                                    echo "<input type='text' name='$markID' value='".$row['mark']."' size='5' />";
+                                echo "</td>";
+                                echo "<td>";
+                                    echo "<input type='text' name='$percentID' value='".$row['percent']."' size='5' />";
+                                echo "</td>";
                                 echo "<td>";
                                     $this->selectGrade($fldID, $row['gradeID']);
                                 echo "</td>";
@@ -710,7 +717,7 @@ class subrep {
             echo "</div>";
             //showComment($fldComment, $comment, $charBarID, $maxChar, $numCharID, $enabledState)
             
-            showComment($fldComment, $comment, $charBarID, $this->maxChar, $numCharID, $this->numRows, $this->enabledState);
+            showComment($fldComment, $comment, $charBarID, $this->maxChar, $numCharID, $this->numRows, $this->numCols, $this->enabledState);
         echo "</div>";
 
         echo "<div style = 'float:left;width:10px;'>&nbsp;</div>"; // spacer between report and photo

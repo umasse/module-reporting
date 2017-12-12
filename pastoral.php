@@ -5,6 +5,9 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/pastoral.php")==F
             print "You do not have access to this action." ;
     print "</div>" ;
 } else {
+    echo "<div class='trail'>";
+    echo "<div class='trailHead'><a href='".$_SESSION[$guid]['absoluteURL']."'>".__($guid, 'Home')."</a> > <a href='".$_SESSION[$guid]['absoluteURL'].'/index.php?q=/modules/'.getModuleName($_GET['q']).'/'.getModuleEntry($_GET['q'], $connection2, $guid)."'>".__($guid, getModuleName($_GET['q']))."</a> > </div><div class='trailEnd'>".__($guid, 'Pastoral').'</div>';
+    echo '</div>';    
     // proceed
     // include function pages
     $modpath =  "./modules/".$_SESSION[$guid]["module"];
@@ -19,18 +22,20 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/pastoral.php")==F
     $thisPage = 'pastoral';
     $title = 'Pastoral';
 
-    pageTitle($title);
-
     echo "<div class='instruct' id='instruct' style='display:none'>";
     echo "<div style='float:left'><strong>Instructions</strong></div>";
     echo "<div style='float:right'>";
     echo "<a href='#' onclick='instructHide()'>Hide</a>";
     echo "</div>";
     echo "<div style=clear:both></div>";
-    echo "<p>Enter form tutor's comments</p>";
+    echo "<p>Select</p>";
     echo "<ul>";
-    echo "<li>Form tutor can see all subject reports for students</li>";
-    echo "<li>Tutor can write pastoral comment to be included in the report</li>";
+    echo "<li>Year group</li>";
+    echo "<li>Class</li>";
+    echo "<li>Report</li>";
+    echo "<li>Student</li>";
+    echo "<li>Read assessments from other teachers</li>";
+    echo "<li>Write comment and save</li>";
     echo "</ul>";
     echo "</div>";
     echo "<div id='instructShow' style='display:block;float:right' class='smalltext'>";

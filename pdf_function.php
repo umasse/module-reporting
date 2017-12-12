@@ -12,7 +12,7 @@ class setpdf {
 
     var $schoolYearID;
 
-    function setpdf($guid, $connection2) {
+    function __construct($guid, $connection2) {
         // get value of selected year
         $this->repEdit = $_SESSION[$guid]['repEdit'];
 
@@ -173,7 +173,8 @@ class setpdf {
         if ($this->rollGroupID > 0 && $this->reportID > 0) {
             $processPath = $this->modpath."/pdf_create.php";
             $rollGroupList = $this->rollGroupList;
-            $path = $_SESSION[$guid]['absoluteURL'].$_SESSION['archivePath'].$this->schoolYearName.'/';
+            $webfolderrelativepath = $_SESSION['archivePath'].$this->schoolYearName.'/';
+            $webfolderfullpath = $_SESSION[$guid]['absoluteURL'].$webfolderrelativepath;
             ?>
             <form name='frm_makepdf' method='post' action='<?php echo $processPath ?>'>
                 <input type='hidden' name='schoolYearID' value='<?php echo $this->schoolYearID ?>' />
@@ -181,18 +182,19 @@ class setpdf {
                 <input type='hidden' name='rollGroupID' value='<?php echo $this->rollGroupID ?>' />
                 <input type='hidden' name='reportID' value='<?php echo $this->reportID ?>' />
                 <input type='hidden' name='showLeft' value='<?php echo $this->showLeft ?>' />
+                <input type='submit' name='makepdf' value='Make PDF' onclick="return countBoxes('check')" />
+                <input type='submit' name='downloadPDF' value='Download PDF' onclick="return countBoxes('check')" />
                 <table style='width:100%'>
                     <tr>
                         <th style='width:30%'>Student</th>
                         <th style='width:40%;'>File</th>
                         <th style='width:20%;'>Date</th>
-                        <th style='width:10%;text-align:center'><input type='checkbox' name='checkAllStudents' id='checkAllStudents' value='1' onclick='checkAll("check", this.checked);' /></th>
+                        <th style='width:10%;text-align:center'><input type='checkbox' name='AllStudents' id='checkAllStudents' value='1' onclick='checkAll("check", this.checked);' /></th>
                     </tr>
                     <?php
                     $c = 0;
                     while ($row = $rollGroupList->fetch()) {
                         $rowcol = oddEven($c++);
-                        $link = $path.$row['reportName'];
                         $check_id = 'check'.$row['gibbonPersonID'];
                         $created = $row['created'];
                         if ($created == '' || substr($created, 0, 4) == '0000') {
@@ -200,13 +202,25 @@ class setpdf {
                         } else {
                             $created = date('d-m-Y H:i:s', strtotime($created));
                         }
+                        $fullFileName = $_SERVER['DOCUMENT_ROOT'].$webfolderrelativepath.$row['reportName'];
+                        $fullFileWeblink = $webfolderfullpath.$row['reportName'];
                         ?>
                         <tr class='<?php echo $rowcol ?>'>
                             <td><?php echo $row['surname'],', '.$row['preferredName'] ?></td>
                             <td>
-                                <a href='<?php echo $link ?>' target='_blank'><?php echo $row['reportName'] ?></a>
+                                <?php 
+                                if (file_exists($fullFileName)) {
+                                    echo "<a href='$fullFileWeblink' target='_blank'>".$row['reportName']."</a>";
+                                } 
+                                ?> 
                             </td>
-                            <td><?php echo $created ?></td>
+                            <td>
+                                <?php 
+                                if (file_exists($fullFileName)) {
+                                    echo $created;
+                                }
+                                ?>
+                            </td>
                             <td style='text-align:center;'><input type='checkbox' name='<?php echo $check_id ?>' class='check' value='1' /></td>
                         </tr>
                         <?php

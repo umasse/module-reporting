@@ -240,30 +240,3 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/insertmark.php")=
     </div>
     <?php
 }
-/*
-function get_classYearGroups($connection2, $classCode, $schoolYearID) {
-    // check year group of selected class
-    try {
-        $query_select = "SELECT gibbonStudentEnrolment.gibbonYearGroupID, RIGHT(nameShort, 2) AS yearGroup
-            FROM gibbonCourseClassPerson
-            INNER JOIN gibbonStudentEnrolment
-            ON gibbonCourseClassPerson.gibbonPersonID = gibbonStudentEnrolment.gibbonPersonID
-            INNER JOIN gibbonYearGroup
-            ON gibbonYearGroup.gibbonYearGroupID = gibbonStudentEnrolment.gibbonYearGroupID
-            WHERE gibbonCourseClassID = :classCode
-            AND role = 'Student'
-            AND gibbonStudentEnrolment.gibbonSchoolYearID = :schoolYearID
-            GROUP BY gibbonStudentEnrolment.gibbonYearGroupID
-            ORDER BY nameShort DESC";
-        $select = $connection2->prepare($query_select);
-        $data = array(
-            ":classCode"=>$classCode,
-            ":schoolYearID"=>$schoolYearID);
-        $select->execute($data);
-        return $select;
-    } catch(PDOException $e) {
-        print "<div>" . $e->getMessage() . "</div>" ;
-    }
-}
- * 
- */

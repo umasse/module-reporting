@@ -5,6 +5,9 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/subject.php")==FA
             print "You do not have access to this action." ;
     print "</div>" ;
 } else {
+    echo "<div class='trail'>";
+    echo "<div class='trailHead'><a href='".$_SESSION[$guid]['absoluteURL']."'>".__($guid, 'Home')."</a> > <a href='".$_SESSION[$guid]['absoluteURL'].'/index.php?q=/modules/'.getModuleName($_GET['q']).'/'.getModuleEntry($_GET['q'], $connection2, $guid)."'>".__($guid, getModuleName($_GET['q']))."</a> > </div><div class='trailEnd'>".__($guid, 'Subject').'</div>';
+    echo '</div>';    
     // proceed
     // include function pages
     $modpath =  "./modules/".$_SESSION[$guid]["module"];
@@ -27,8 +30,6 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/subject.php")==FA
     ///////////////////////////////////////////////////////////////////////////////////////////
     // output to screen
     ///////////////////////////////////////////////////////////////////////////////////////////
-    pageTitle($title);
-
     echo "<div class='instruct' id='instruct' style='display:none'>";
     echo "<div style='float:left'><strong>Instructions</strong></div>";
     echo "<div style='float:right'>";
@@ -57,6 +58,7 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/subject.php")==FA
     $_SESSION[$guid]['sidebarExtra'] .= $subrep->showTeacherList($connection2);
     $_SESSION[$guid]['sidebarExtra'] .= $subrep->showClassesList($connection2);
     if ($subrep->classID > 0) {
+        // ChooseReport ($connection2, $classID, $reportID, $rollGroupID, $schoolYearID, $teacherID, $yearGroupID)
         $_SESSION[$guid]['sidebarExtra'] .= chooseReport($connection2, $subrep->classID, $subrep->reportID, '', $subrep->schoolYearID, $subrep->teacherID, $subrep->yearGroupID);
     }
     $_SESSION[$guid]['sidebarExtra'] .= "</div><div style = 'clear:both;'>&nbsp;</div>";

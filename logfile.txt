@@ -1,292 +1,302 @@
-[06-Apr-2016 06:44:06 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 8
-[06-Apr-2016 06:44:06 Europe/Berlin] PHP Notice:  Undefined variable: connection2 in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 13
-[06-Apr-2016 06:44:06 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/function.php on line 764
-[06-Apr-2016 06:46:06 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 9
-[06-Apr-2016 06:46:06 Europe/Berlin] PHP Notice:  Undefined variable: connection2 in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 14
-[06-Apr-2016 06:46:06 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/function.php on line 764
-[06-Apr-2016 06:47:04 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 9
-[06-Apr-2016 06:47:04 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/function.php on line 764
-[06-Apr-2016 06:48:42 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 11
-[06-Apr-2016 06:48:42 Europe/Berlin] PHP Notice:  Undefined variable: dbh in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 16
-[06-Apr-2016 06:48:42 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/function.php on line 764
-[06-Apr-2016 06:53:26 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 32
-[06-Apr-2016 06:53:26 Europe/Berlin] PHP Notice:  Undefined variable: dbh in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 37
-[06-Apr-2016 06:53:26 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/function.php on line 764
-[06-Apr-2016 06:55:09 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 06:55:33 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 06:55:33 Europe/Berlin] PHP Notice:  Undefined variable: dbh in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 38
-[06-Apr-2016 06:55:33 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/function.php on line 764
-[06-Apr-2016 06:56:20 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 06:56:32 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:02:21 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:02:37 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:05:15 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:07:35 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:08:35 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:09:24 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:09:42 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:13:58 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:14:00 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 33
-[06-Apr-2016 07:14:00 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 34
-[06-Apr-2016 07:14:00 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 35
-[06-Apr-2016 07:14:00 Europe/Berlin] PHP Notice:  Undefined index: classID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 36
-[06-Apr-2016 07:18:37 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:18:39 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 33
-[06-Apr-2016 07:18:39 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 34
-[06-Apr-2016 07:18:39 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 35
-[06-Apr-2016 07:18:39 Europe/Berlin] PHP Notice:  Undefined index: classID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 36
-[06-Apr-2016 07:19:19 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:19:20 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 33
-[06-Apr-2016 07:19:20 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 34
-[06-Apr-2016 07:19:20 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 35
-[06-Apr-2016 07:19:20 Europe/Berlin] PHP Notice:  Undefined index: classID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 36
-[06-Apr-2016 07:21:01 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:21:05 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 33
-[06-Apr-2016 07:21:05 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 34
-[06-Apr-2016 07:21:05 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 35
-[06-Apr-2016 07:21:05 Europe/Berlin] PHP Notice:  Undefined index: classID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 36
-[06-Apr-2016 07:22:08 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:23:12 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:24:21 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:26:27 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:35:11 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:35:11 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:35:11 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:35:12 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 33
-[06-Apr-2016 07:35:12 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:35:12 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:41:27 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:41:27 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:41:27 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:42:02 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:42:02 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:42:02 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:42:41 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:42:41 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:42:41 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:43:54 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:43:54 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:43:54 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:44:15 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 34
-[06-Apr-2016 07:44:15 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 35
-[06-Apr-2016 07:44:15 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:44:15 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:44:15 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:45:13 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 34
-[06-Apr-2016 07:45:13 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 35
-[06-Apr-2016 07:45:13 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:45:13 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:45:13 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:46:58 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:46:58 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:46:58 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:48:40 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:48:40 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:48:40 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:49:11 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 34
-[06-Apr-2016 07:49:11 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 35
-[06-Apr-2016 07:49:11 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:49:11 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:49:11 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:49:41 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 34
-[06-Apr-2016 07:49:41 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 35
-[06-Apr-2016 07:49:41 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:49:41 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:49:41 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:51:14 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 34
-[06-Apr-2016 07:51:14 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 35
-[06-Apr-2016 07:51:14 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:51:14 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:51:14 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:51:41 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 34
-[06-Apr-2016 07:51:41 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 35
-[06-Apr-2016 07:51:41 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:51:41 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:51:41 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:52:10 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:52:10 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 60
-[06-Apr-2016 07:52:10 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:52:57 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:52:57 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 58
-[06-Apr-2016 07:52:57 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 58
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 58
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 58
-[06-Apr-2016 07:52:59 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:53:54 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:53:54 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 58
-[06-Apr-2016 07:53:54 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:54:28 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:54:28 Europe/Berlin] PHP Notice:  Undefined variable: query_select in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/insertmark_function.php on line 58
-[06-Apr-2016 07:54:28 Europe/Berlin] PHP Fatal error:  Call to a member function fetchAll() on null in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 43
-[06-Apr-2016 07:55:10 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:55:20 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 07:55:41 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 33
-[06-Apr-2016 07:55:41 Europe/Berlin] PHP Notice:  Undefined index: reportID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 34
-[06-Apr-2016 07:55:41 Europe/Berlin] PHP Notice:  Undefined index: subjectID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 35
-[06-Apr-2016 07:55:41 Europe/Berlin] PHP Notice:  Undefined index: classID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_check_ajax.php on line 36
-[06-Apr-2016 08:14:29 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:15:57 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:17:05 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:17:40 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:19:24 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:19:56 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:20:40 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:21:16 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:22:02 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:23:23 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:24:41 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:25:12 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[06-Apr-2016 08:26:18 Europe/Berlin] PHP Notice:  Undefined index: schoolYearID in /Applications/MAMP/htdocs/gibbon12/modules/reporting/insertmark_ajax.php on line 36
-[07-Apr-2016 07:08:49 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/gibbon12/modules/Reporting/function.php:794) in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create.php on line 167
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:25 Europe/Berlin] PHP Fatal error:  Call to a member function fetch() on array in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:24:33 Europe/Berlin] PHP Fatal error:  Call to a member function fetch() on array in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:25:24 Europe/Berlin] PHP Fatal error:  Call to a member function fetch() on array in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:25:33 Europe/Berlin] PHP Fatal error:  Call to a member function fetch() on array in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:10 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 695
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:26:35 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:27:02 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php:338) in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create.php on line 167
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:03 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:07 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 696
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 697
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:28:59 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:29:19 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:29:37 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:31:29 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:29 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:29 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:29 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:29 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:29 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:30 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:30 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:30 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
-[07-Apr-2016 07:31:30 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:31:30 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Undefined variable: rowData in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 700
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:32:11 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:32:22 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:32:22 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:32:44 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:32:44 Europe/Berlin] PHP Notice:  Use of undefined constant sublist - assumed 'sublist' in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 337
-[07-Apr-2016 07:47:47 Europe/Berlin] PHP Notice:  Undefined variable: teacherName in /Applications/MAMP/htdocs/gibbon12/modules/Reporting/pdf_create_function.php on line 699
+
+[23-Sep-2017 09:23:05 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[23-Sep-2017 09:23:05 Asia/Makassar] PHP Stack trace:
+[23-Sep-2017 09:23:05 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[24-Sep-2017 19:58:50 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94,95) AND reportID = 10;
+                    DELETE FROM arrReportSectionDet' at line 2 in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php on line 73
+[24-Sep-2017 19:58:52 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94,95) AND reportID = 10;
+                    DELETE FROM arrReportSectionDet' at line 2 in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php on line 73
+[24-Sep-2017 19:59:13 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94,95) AND reportID = 10;
+                    DELETE FROM arrReportSectionDet' at line 2 in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php on line 73
+[24-Sep-2017 19:59:14 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94,95) AND reportID = 10;
+                    DELETE FROM arrReportSectionDet' at line 2 in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php on line 73
+[24-Sep-2017 19:59:21 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94,95) AND reportID = 10;
+                    DELETE FROM arrReportSectionDet' at line 2 in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php on line 73
+[24-Sep-2017 19:59:27 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '94,93,95) AND reportID = 10;
+                    DELETE FROM arrReportSectionDet' at line 2 in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php on line 73
+[24-Sep-2017 19:59:28 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '94,93,95) AND reportID = 10;
+                    DELETE FROM arrReportSectionDet' at line 2 in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon13bis/modules/Reporting/admin_design_ajax.php on line 73
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  getimagesize(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php on line 163
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. TCPDF_IMAGES::_parsejpeg() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6963
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   7. getimagesize() /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php:163
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  getimagesize(): Failed to enable crypto in /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php on line 163
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. TCPDF_IMAGES::_parsejpeg() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6963
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   7. getimagesize() /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php:163
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  getimagesize(https://gibbon13bis.lxclocal.net/bisfiles/reports/bis-report-front.jpg): failed to open stream: operation failed in /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php on line 163
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. TCPDF_IMAGES::_parsejpeg() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6963
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   7. getimagesize() /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php:163
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  imagecreatefromjpeg(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed in /var/www/gibbon13bis/lib/tcpdf/tcpdf.php on line 6971
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. imagecreatefromjpeg() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6971
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  imagecreatefromjpeg(): Failed to enable crypto in /var/www/gibbon13bis/lib/tcpdf/tcpdf.php on line 6971
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. imagecreatefromjpeg() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6971
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  imagecreatefromjpeg(https://gibbon13bis.lxclocal.net/bisfiles/reports/bis-report-front.jpg): failed to open stream: operation failed in /var/www/gibbon13bis/lib/tcpdf/tcpdf.php on line 6971
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. imagecreatefromjpeg() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6971
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  imagejpeg() expects parameter 1 to be resource, boolean given in /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php on line 148
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. TCPDF_IMAGES::_toJPEG() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6987
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   7. imagejpeg() /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php:148
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Warning:  imagedestroy() expects parameter 1 to be resource, boolean given in /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php on line 149
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. TCPDF_IMAGES::_toJPEG() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6987
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   7. imagedestroy() /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php:149
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Notice:  getimagesize(): Read error! in /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php on line 163
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:93
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   3. MYPDF->writeHTML() /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php:432
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   4. MYPDF->openHTMLTagHandler() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18116
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   5. MYPDF->Image() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:18706
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   6. TCPDF_IMAGES::_toJPEG() /var/www/gibbon13bis/lib/tcpdf/tcpdf.php:6987
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   7. TCPDF_IMAGES::_parsejpeg() /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php:150
+[25-Sep-2017 09:12:44 Asia/Makassar] PHP   8. getimagesize() /var/www/gibbon13bis/lib/tcpdf/include/tcpdf_images.php:163
+[25-Sep-2017 13:44:54 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[25-Sep-2017 13:44:54 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 13:44:54 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 13:49:53 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[25-Sep-2017 13:49:53 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 13:49:53 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 13:54:08 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[25-Sep-2017 13:54:08 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 13:54:08 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:27:04 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[25-Sep-2017 14:27:04 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:27:04 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:27:04 Asia/Makassar] PHP Notice:  Undefined property: setpdf::$teacherName in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 443
+[25-Sep-2017 14:27:04 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:27:04 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:27:04 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:109
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP Notice:  Undefined property: setpdf::$teacherName in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 443
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:109
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP Notice:  Undefined property: setpdf::$teacherName in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 443
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:27:05 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:109
+[25-Sep-2017 14:28:30 Asia/Makassar] PHP Notice:  Undefined property: setpdf::$teacherName in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 443
+[25-Sep-2017 14:28:30 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:28:30 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:28:30 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:109
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP Notice:  Undefined property: setpdf::$teacherName in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 443
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:109
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP Notice:  Undefined property: setpdf::$teacherName in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 443
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[25-Sep-2017 14:28:31 Asia/Makassar] PHP   2. setpdf->textSection() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:109
+[25-Sep-2017 14:37:09 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[25-Sep-2017 14:37:09 Asia/Makassar] PHP Stack trace:
+[25-Sep-2017 14:37:09 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[26-Sep-2017 10:32:00 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[26-Sep-2017 10:32:00 Asia/Makassar] PHP Stack trace:
+[26-Sep-2017 10:32:00 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[26-Sep-2017 10:37:10 Asia/Makassar] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; setpdf has a deprecated constructor in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 27
+[26-Sep-2017 10:37:10 Asia/Makassar] PHP Stack trace:
+[26-Sep-2017 10:37:10 Asia/Makassar] PHP   1. {main}() /var/www/gibbon13bis/modules/Reporting/pdf_create.php:0
+[27-Sep-2017 09:24:38 Asia/Makassar] PHP Parse error:  syntax error, unexpected '$termLastDay' (T_VARIABLE) in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 843
+[27-Sep-2017 09:35:51 Asia/Makassar] PHP Parse error:  syntax error, unexpected '$termLastDay' (T_VARIABLE) in /var/www/gibbon13bis/modules/Reporting/pdf_create_function.php on line 843
+[04-Oct-2017 15:40:17 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[04-Oct-2017 15:42:31 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 16:38:35 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '91,92) AND reportID = 9;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 16:38:37 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '91,92) AND reportID = 9;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:08:48 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:08:56 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:09:16 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:09:43 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:09:53 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:09:54 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:09:55 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:29:25 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:30:01 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:30:01 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:30:02 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail
+' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:30:07 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:30:08 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:30:08 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73
+[05-Oct-2017 17:30:08 Asia/Makassar] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',93,94) AND reportID = 4;
+                    DELETE FROM arrReportSectionDetail' at line 2 in /var/www/gibbon/modules/Reporting/admin_design_ajax.php:73
+Stack trace:
+#0 /var/www/gibbon/modules/Reporting/admin_design_ajax.php(73): PDOStatement->execute()
+#1 {main}
+  thrown in /var/www/gibbon/modules/Reporting/admin_design_ajax.php on line 73

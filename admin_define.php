@@ -5,6 +5,9 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/admin_define.php"
             print "You do not have access to this action." ;
     print "</div>" ;
 } else {
+    echo "<div class='trail'>";
+    echo "<div class='trailHead'><a href='".$_SESSION[$guid]['absoluteURL']."'>".__($guid, 'Home')."</a> > <a href='".$_SESSION[$guid]['absoluteURL'].'/index.php?q=/modules/'.getModuleName($_GET['q']).'/'.getModuleEntry($_GET['q'], $connection2, $guid)."'>".__($guid, getModuleName($_GET['q']))."</a> > </div><div class='trailEnd'>".__($guid, 'Admin Define').'</div>';
+    echo '</div>';    
     // proceed
     // include function pages
     $modpath =  "./modules/".$_SESSION[$guid]["module"];
@@ -22,8 +25,6 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/admin_define.php"
     ///////////////////////////////////////////////////////////////////////////////////////////
     // output to screen
     ///////////////////////////////////////////////////////////////////////////////////////////
-    pageTitle($title);
-
     echo "<div class='instruct' id='instruct' style='display:none'>";
     echo "<div style='float:left'><strong>Instructions</strong></div>";
     echo "<div style='float:right'>";
@@ -36,7 +37,7 @@ if (isActionAccessible($guid, $connection2,"/modules/Reporting/admin_define.php"
     echo "<li>Set the default grade scale.  Later we may allow different criteria to use different grade scales.</li>";
     echo "<li>Currently you have little control over the appearance of the report.  We can add in more options later.</li>";
     echo "<li>You can add as many reports as you like.  You may define different reports for different year groups and different times of the year.</li>";
-    echo "<li>Later we may consider adding a <emcopy</em> function to allow new reports to be set up with the same settings as an existing one.</li>";
+    echo "<li>Later we may consider adding a <em>copy</em> function to allow new reports to be set up with the same settings as an existing one.</li>";
     echo "</ul>";
     echo "</div>";
     echo "<div id='instructShow' style='display:block;float:right' class='smalltext'>";

@@ -16,7 +16,7 @@ class arc {
 
     var $schoolYearID;
 
-    function arc($guid, $connection2) {
+    function __construct($guid, $connection2) {
         // get value of selected year
         $this->schoolYearName = '';
         $this->schoolYearID = getSchoolYearID($connection2, $this->schoolYearName, $this->currentYearID);
