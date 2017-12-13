@@ -387,7 +387,7 @@ class createpdf {
         $data = array(
             'rollGroupID' => $this->rollGroupID
         );
-        $sql = "SELECT name, nameShort, CONCAT(firstName, ' ', surname) AS teacherName
+        $sql = "SELECT name, nameShort, CONCAT(preferredName, ' ', surname) AS teacherName
             FROM gibbonRollGroup
             INNER JOIN gibbonPerson
             ON gibbonRollGroup.gibbonPersonIDTutor = gibbonPerson.gibbonPersonID
@@ -1071,7 +1071,7 @@ EOD;
             list($termLastDayYear, $termLastDayMonth, $termLastDayDay) = explode('-', $current_term['lastday']);
             $termLastDayStamp = mktime(0, 0, 0, $termLastDayMonth, $termLastDayDay, $termLastDayYear);
 
-            $output .= "<table class=\"attendanceHeader\"><tr><td>".$current_term['name']."</td></tr></table>";
+            $output .= "<table class=\"attendanceHeader\" cellpadding=\"4\"><tr><td>".$current_term['name']."</td></tr></table>";
 
             //Count back to first Monday before first day
             $startDayStamp = $termFirstDayStamp;
@@ -1364,7 +1364,7 @@ EOD;
         <td class="sectionName">Attendance</td>
     </tr>
 </table>
-<table class="tableSummary">
+<table class="tableSummary" cellpadding="2">
     <tr>
         <th>Summary</th>
         <th>Key</th>
