@@ -14,22 +14,22 @@ class MYPDF extends TCPDF {
         //$tmp=$this->AddFont('pt_sans');
         //$tmp=$this->AddFont('pt_sans_b');
     }
-    
+
     //Page header
     public function Header() {
         GLOBAL $setpdf;
-        
+
     }
 
     // Page footer
     public function Footer() {
         GLOBAL $setpdf;
         //$text = "A Community, Learning for Tomorrow";
-        $text = "Bali Island School - 2017-2018 - Term 1 - ".$setpdf->officialName." - ".$setpdf->yearGroupName;
+        $text = "Bali Island School - 2017-2018 - Semester 1 - ".$setpdf->officialName." - ".$setpdf->yearGroupName;
 
 
         //$this->SetFont('helvetica', 'BI', 8);
-        $this->SetFont('pt_sans', '', 10);        
+        $this->SetFont('pt_sans', '', 10);
         $this->Cell(0, 0, $text, 0, 0, 'C');
     }
 }
@@ -59,7 +59,7 @@ class createpdf {
     var $standard = 10;
     var $heading1 = 12;
     var $gray = 200;
-    
+
     var $insertList = array(
         "Official name", "First name", "Preferred name", "Surname", "Class",
         "School Year", "Year Group", "Roll Group", "Student ID", "Roll Group Teacher", "Student DOB"
@@ -82,10 +82,10 @@ class createpdf {
         $this->rollGroupID = $_POST['rollGroupID'];
         $this->reportID = $_POST['reportID'];
         $this->showLeft = $_POST['showLeft'];
-    
+
         // get teacher and roll group names
         $this->findRollGroup();
-        
+
         $this->reportDetail = readReportDetail($connection2, $this->reportID);
         $reportRow = $this->reportDetail->fetch();
         $this->term = $reportRow['reportNum'];
@@ -99,9 +99,9 @@ class createpdf {
             $this->pageWidth = 240;
             $this->pageOrientation = 'L';
         }
-        
+
         $_SESSION[$guid]['archivePath'] = $_SESSION[$guid]['absolutePath']."/archive/";
-        
+
         //$this->term = $this->findTerm($connection2, $this->reportID);
         $this->yearGroupName = $this->findYearGroupName($connection2, $this->yearGroupID);
 
@@ -113,7 +113,7 @@ class createpdf {
                 $this->printList[] = $subdata;
             }
         }
-        
+
         // download the file to local computer when button is clicked
         if (isset($_POST['downloadPDF'])) {
             $this->download();
@@ -122,12 +122,12 @@ class createpdf {
     }
     ////////////////////////////////////////////////////////////////////////////
 
-    
+
     ////////////////////////////////////////////////////////////////////////////
     function download() {
 
         $files = $this->printList;
-        
+
         //$basepath = "../../archive/reporting/";
         $folderabsolutebasepath = $_SESSION['archiveFilePath'];
 
@@ -169,7 +169,7 @@ class createpdf {
             //create the archive
             $zip = new ZipArchive();
             touch($destination);
-            
+
             if ($zip->open($destination, ZipArchive::OVERWRITE) !== true) {
                 $msg = "Cannot create zip file";
                 $ok = false;
@@ -185,7 +185,7 @@ class createpdf {
                 if (!file_exists($destination)) {
                     $msg = "Zip file not found";
                     $ok = false;
-                } 
+                }
 
                 if ($ok) {
                     $file_name = basename($destination);
@@ -220,7 +220,7 @@ class createpdf {
         }
     }
     ////////////////////////////////////////////////////////////////////////////
-    
+
     ////////////////////////////////////////////////////////////////////////////
     function read_archive_name() {
         // read database to see if there is a file recorded for this student
@@ -249,7 +249,7 @@ class createpdf {
         return $reportName;
     }
     ////////////////////////////////////////////////////////////////////////////
-    
+
     ////////////////////////////////////////////////////////////////////////////
     function findSchoolYearName() {
         $data = array(
@@ -282,14 +282,14 @@ class createpdf {
         return $rs;
     }
     ////////////////////////////////////////////////////////////////////////////
-    
+
     ////////////////////////////////////////////////////////////////////////////
     function checkFolder() {
         // check if archive folder exists
         //echo $_SESSION[$this->guid]['archivePath'];
-        
+
         $path = $_SESSION[$this->guid]['archivePath'];
-        
+
         if (!is_dir($path)) {
             mkdir($path);
         }
@@ -465,10 +465,11 @@ class createpdf {
             ///////////////////////////////
             // FIX FOR ALLOWING CARRIAGE RETURNS
             // https://stackoverflow.com/questions/28835690/tcpdf-writehtmlcell-new-line-issue
-            $needles = array("<br>", "&#13;", "<br/>", "\n");
+            //$needles = array("<br>", "&#13;", "<br/>", "\n");
+            $needles = array("<br>", "<br/>");
             $replacement = "<br />";
             $html = str_replace($needles, $replacement, $html);
-            
+
             $pdf->writeHTML($html);
         }
         return $html;
@@ -565,7 +566,7 @@ EOD;
                                 $html .= "</td>";
                                 $html .= '<td class="col2">';
                                     $html .= $grade;
-                                $html .= "</td>";                                
+                                $html .= "</td>";
                             $html .= "</tr>";
                         }
                     $html .= '</table>';
@@ -614,6 +615,7 @@ EOD;
         foreach ($sublist AS $row) {
             $subjectID = $row['subjectID'];
             $subjectDescription = $row['subjectDescription'];
+            $departmentID = $row['departmentID'];
             $subjectName = $row['subjectName'];
             $teacherName = $row['teacherName'];
             //$teacherName = getTeacherName($this->connection2, $row['classID']);
@@ -621,6 +623,18 @@ EOD;
             $criteriaList = readCriteriaGrade($this->connection2, $this->studentID, $subjectID, $this->reportID);
             $row_subject = $subreport->fetch();
             $comment = $row_subject['subjectComment'];
+
+            // Define titles and other formatting tweaks
+            // First detect if this is a UoI
+            $descriptionHeader = "Course Description";
+            if (substr($subjectName, 0, 3) === "UoI" and $departmentID == 46) {
+              $descriptionHeader = "Unit Description";
+              $regexp_uoi_grade = '/^UoI - \w{2,3} - /i';
+              $subjectName = preg_replace($regexp_uoi_grade, "Unit of Inquiry - ", $subjectName);
+
+            }
+
+
             $html = '';
             $html .= <<<EOD
 <style>
@@ -629,11 +643,13 @@ body {
     font-family: pt_sans, PT Sans, helvetica, sans-serif;
 }
 .subjectname {
-    color: #999999;
+    color: #000000;
     font-weight: bold;
+    font-size: 14px;
     font-family: pt_sans_b, PT Sans, helvetica, sans-serif;
 }
 .teachername {
+    color: #333333;
     font-style: italic;
     font-family: pt_sans_i, PT Sans, helvetica, sans-serif;
 }
@@ -659,16 +675,16 @@ td {
 .col1 {
     text-align: left;
     font-family: pt_sans, PT Sans, helvetica, sans-serif;
-    width: 70%;
+    width: 90%;
 }
 .col2 {
     text-align: center;
     font-family: pt_sans, PT Sans, helvetica, sans-serif;
-    width: 30%;
+    width: 10%;
 }
 .commentHead {
-    width: $this->pageWidth;
-    font-family: pt_sans, PT Sans, helvetica, sans-serif;
+    font-weight; bold;
+    font-family: pt_sans_b, PT Sans, helvetica, sans-serif;
 }
 </style>
 EOD;
@@ -682,10 +698,12 @@ EOD;
                 if (!empty($subjectDescription)) {
                     $html .= '<table class="gradeTable" cellpadding="4">';
                         $html .= '<tr>';
-                            $html .= '<th colspan="2">Course Description</th>';
+                            $html .= '<th colspan="2">';
+                            $html .= $descriptionHeader;
+                            $html .= '</th>';
                         $html .= '</tr>';
                         $html .= '<tr>';
-                            $html .= '<td colspan="2">';
+                            $html .= '<td class="subjectDescription" colspan="2">';
                                 $html .= nl2br($subjectDescription);
                             $html .= '</td>';
                         $html .= '</tr>';
@@ -710,7 +728,7 @@ EOD;
                                     $html .= '<td class="col1">'.$criteriaName.'</td>';
                                     $html .= '<td class="col2">';
                                         $html .= $grade;
-                                    $html .= "</td>";                                
+                                    $html .= "</td>";
                                 $html .= "</tr>";
                             }
                         }
@@ -718,12 +736,12 @@ EOD;
                 }
 
                 if (!empty($comment)) {
-                    $html .= '<table class="gradeTable" cellpadding="4">';
+                    $html .= '<table class="gradeTable" cellpadding="4" width="100%">';
                         $html .= '<tr>';
-                            $html .= '<th colspan="2">Comment</th>';
+                            $html .= '<th class="commentHead">Comment</th>';
                         $html .= '</tr>';
                         $html .= '<tr>';
-                            $html .= '<td colspan="2">';
+                            $html .= '<td class="commentBox">';
                                 $html .= nl2br($comment);
                             $html .= '</td>';
                         $html .= '</tr>';
@@ -745,7 +763,7 @@ EOD;
             }
             $debug_html.=$html;
         }
-        
+
         return $debug_html;
     }
     ////////////////////////////////////////////////////////////////////////////
@@ -840,35 +858,75 @@ EOD;
         } else {
             $pdf->commitTransaction();
         }
-        
+
         return $html;
     }
     ////////////////////////////////////////////////////////////////////////////
-    
-    
+
+
     ////////////////////////////////////////////////////////////////////////////
     // pastoral section
     ////////////////////////////////////////////////////////////////////////////
-    function pastoralReport($pdf) { 
+    function pastoralReport($pdf) {
         //$sublist = readStudentClassList($this->connection2, $this->studentID, $this->schoolYearID);
         $this->rowHeight = 12;
         $this->commentHeight = 46;
         $html = '';
-        $html .= '<style>';
-            $html .= 'body{font-size:12px; font-family: pt_sans, PT Sans, helvetica, sans-serif;}';
-            $html .= '.subjectname {color:#999999; font-weight:bold;}';
-            $html .= '.teachername {font-style:italic;}';
-            $html .= '.smalltext {font-size:11px;}';
-            $html .= '.gradeTable table{width:100%;}';
-            $html .= '.gradeTable th {border: 1px solid #cccccc; background-color: #dddddd; padding:1px;}';
-            $html .= '.gradeTable td {border: 1px solid #cccccc; padding:1px;}';
-            $html .= '.col1 {text-align:left; width:60%}';
-            $html .= '.col2 {text-align:center; width:40%;}';
-            $html .= '.commentHead {width:100%;}';
-        $html .= '</style>';
-        
+        $html .= <<<EOD
+<style>
+body {
+font-size: 12px;
+font-family: pt_sans, PT Sans, helvetica, sans-serif;
+}
+.subjectname {
+color: #000000;
+font-weight: bold;
+font-size: 14px;
+font-family: pt_sans_b, PT Sans, helvetica, sans-serif;
+}
+.teachername {
+color: #333333;
+font-style: italic;
+font-family: pt_sans_i, PT Sans, helvetica, sans-serif;
+}
+.gradeTable table {
+width: 100%;
+font-family: pt_sans, PT Sans, helvetica, sans-serif;
+}
+td {
+font-size: 10px;
+font-family: pt_sans, PT Sans, helvetica, sans-serif;
+}
+.gradeTable th {
+border: 1px solid #cccccc;
+background-color: #dddddd;
+padding: 1px;
+font-family: pt_sans_b, PT Sans, helvetica, sans-serif;
+}
+.gradeTable td {
+border: 1px solid #cccccc;
+padding: 1px;
+font-family: pt_sans, PT Sans, helvetica, sans-serif;
+}
+.col1 {
+text-align: left;
+font-family: pt_sans, PT Sans, helvetica, sans-serif;
+width: 90%;
+}
+.col2 {
+text-align: center;
+font-family: pt_sans, PT Sans, helvetica, sans-serif;
+width: 10%;
+}
+.commentHead {
+font-weight: bold;
+font-family: pt_sans_b, PT Sans, helvetica, sans-serif;
+}
+</style>
+EOD;
+
         $subjectID = 0;
-        $subjectName = "Pastoral";
+        $subjectName = "Homeroom";
         $teacherName = $this->classTeacher;
         $subreport = readSubReport($this->connection2, $this->studentID, 0, $this->reportID);
         //$criterialist = readCriteriaList($connection2, $subjectID);
@@ -902,13 +960,13 @@ EOD;
                 $html .= '</table>';
             }
 
-            if ($comment != '') {
-                $html .= '<table class="gradeTable" cellpadding="4">';
+            if (!empty($comment)) {
+                $html .= '<table class="gradeTable" cellpadding="4" width="100%">';
                     $html .= '<tr>';
-                        $html .= '<th colspan="2" class="commentHead">Comment</th>';
+                        $html .= '<th class="commentHead">Comment</th>';
                     $html .= '</tr>';
                     $html .= '<tr>';
-                        $html .= '<td colspan="2">';
+                        $html .= '<td class="commentBox">';
                             $html .= nl2br($comment);
                         $html .= '</td>';
                     $html .= '</tr>';
@@ -917,7 +975,7 @@ EOD;
             $html .= '<div>&nbsp;</div>';
 
         }
-        
+
         $cp =  $pdf->getPage(); // current page number
         $pdf->startTransaction();
         $pdf->writeHTML($html, true, false, true, false, '');
@@ -1209,7 +1267,7 @@ EOD;
             }
 
             $output .= "</table>";
-                
+
         }
 
         // Looping per term finishes here
@@ -1348,7 +1406,7 @@ EOD;
         //$html.= "<img style='border: 1px solid #eee' alt='Data Key' src='".$_SESSION[$this->guid]['absoluteURL']."/modules/Attendance/img/dataKey.png'>";
         $html.= "<table><tr><td style=\"font-size: 2px\">&nbsp;</td></tr><tr><td><img height=\"120\" src=\"http://webhost.baliis.net/bisfiles/attendance-data-key.png\"></td></tr></table>";
         $html.= '</td></tr></table>';
-        
+
         // Append the detailed table
         $html.= $output;
 
@@ -1356,13 +1414,13 @@ EOD;
         return $html;
     }
 
-    function attendanceTermReport($pdf) { 
+    function attendanceTermReport($pdf) {
         $this->rowHeight = 12;
         $this->commentHeight = 46;
         $html = $this->readStudentAttendanceHistory();
 
         //file_put_contents("/tmp/html_debug.html", $html);
-        
+
         $cp =  $pdf->getPage(); // current page number
         $pdf->startTransaction();
         $pdf->writeHTML($html, true, false, true, false, '');
@@ -1378,7 +1436,7 @@ EOD;
         return $html;
     }
     ////////////////////////////////////////////////////////////////////////////
-    
+
     ////////////////////////////////////////////////////////////////////////////
     function readCriteriaList() {
         $data = array(
@@ -1450,7 +1508,7 @@ EOD;
             WHERE gibbonCourse.gibbonSchoolYearID = :schoolYearID
             AND gibbonCourseClassPerson.gibbonPersonID = :studentID
             AND gibbonCourseClass.reportable = 'Y'
-            
+
             AND arrSubjectDetail.arrCourseType <> '-'
             ORDER BY arrSubjectPosition";
         //print $sql;
@@ -1459,14 +1517,14 @@ EOD;
         $rs->execute($data);
         return $rs;
     }
-    
+
     function readReportSetting() {
-        
+
         $rs = $this->connection2->prepare($sql);
         $rs->execute($data);
         return $rs;
     }
-    
+
     ////////////////////////////////////////////////////////////////////////////////
     function readReportSectionList($connection2) {
         // read list of sections that make up the report
@@ -1533,22 +1591,21 @@ function readStudentClassListNoRepeat($connection2, $studentID, $schoolYearID) {
         'studentID' => $studentID,
         'schoolYearID' => $schoolYearID
     );
-    $sql = "SELECT gibbonCourseClassPerson.gibbonCourseClassID AS classID, 
-        gibbonCourseClass.name AS subjectClassName, 
-        gibbonCourseClass.nameShort AS subjectClassNameShort, 
+    $sql = "SELECT gibbonCourseClassPerson.gibbonCourseClassID AS classID,
+        gibbonCourseClass.name AS subjectClassName,
+        gibbonCourseClass.nameShort AS subjectClassNameShort,
         gibbonCourse.gibbonCourseID AS subjectID,
-        gibbonCourse.description, 
+        gibbonCourse.gibbonDepartmentID AS departmentID,
+        gibbonCourse.description,
         gibbonCourse.name AS subjectName,
         teacher.gibbonPersonID,
         CONCAT(gibbonPerson.preferredName,' ',gibbonPerson.surname) AS teacherName
-
-        FROM gibbonCourseClassPerson 
-        INNER JOIN gibbonCourseClass 
-        ON gibbonCourseClass.gibbonCourseClassID = gibbonCourseClassPerson.gibbonCourseClassID INNER JOIN gibbonCourse 
-        ON gibbonCourse.gibbonCourseID = gibbonCourseClass.gibbonCourseID 
-        INNER JOIN gibbonCourseClassPerson AS teacher 
-        ON teacher.gibbonCourseClassID = gibbonCourseClass.gibbonCourseClassID 
-
+        FROM gibbonCourseClassPerson
+        INNER JOIN gibbonCourseClass
+        ON gibbonCourseClass.gibbonCourseClassID = gibbonCourseClassPerson.gibbonCourseClassID INNER JOIN gibbonCourse
+        ON gibbonCourse.gibbonCourseID = gibbonCourseClass.gibbonCourseID
+        INNER JOIN gibbonCourseClassPerson AS teacher
+        ON teacher.gibbonCourseClassID = gibbonCourseClass.gibbonCourseClassID
         LEFT JOIN gibbonPerson
         ON gibbonPerson.gibbonPersonID = teacher.gibbonPersonID
         WHERE gibbonCourseClassPerson.gibbonPersonID = :studentID
@@ -1558,7 +1615,7 @@ function readStudentClassListNoRepeat($connection2, $studentID, $schoolYearID) {
         ORDER BY gibbonCourse.name";
     $rs = $connection2->prepare($sql);
     $rs->execute($data);
-    
+
     // there maybe multiple teachers so reduce this to one row per class
     $classList = array();
     $rowdata = array();
@@ -1578,6 +1635,7 @@ function readStudentClassListNoRepeat($connection2, $studentID, $schoolYearID) {
             $rowdata['subjectClassNameShort'] = $row['subjectClassNameShort'];
             $rowdata['subjectID'] = $row['subjectID'];
             $rowdata['subjectName'] = $row['subjectName'];
+            $rowdata['departmentID'] = $row['departmentID'];
             $teacherName = '';
             $comma = "";
         }
@@ -1589,4 +1647,15 @@ function readStudentClassListNoRepeat($connection2, $studentID, $schoolYearID) {
     return $classList;
 }
 ////////////////////////////////////////////////////////////////////////////////
+
+// function cleanHTMLforTCPDF($htmltext) {
+//   $result = "";
+//
+//   // convert <p></p> to simplre linebreaks
+//
+//
+//
+//   return $result;
+// }
+
 ?>

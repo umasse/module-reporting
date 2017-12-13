@@ -32,14 +32,14 @@ if (1==2) {
     $root = $_SERVER['DOCUMENT_ROOT'];
     require_once $root."/lib/tcpdf-6.2/tcpdf.php";
     include "./pdf_create_function.php";
-    
+
 
     setSessionVariables($guid, $connection2);
 
     $setpdf = new createpdf($guid, $connection2);
-    
+
     $reportSection = $setpdf->readReportSectionList($connection2);
-    
+
     // check folder exists
     $setpdf->checkFolder();
     //$path = '../..'.$_SESSION['archivePath'].$setpdf->schoolYearName.'/';
@@ -94,6 +94,21 @@ if (1==2) {
         $pdf = new MYPDF ($setpdf->pageOrientation, 'mm', 'A4', true, 'UTF-8', false);
         // set margins
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+
+        // Set PADDING
+        $pdf->SetCellPadding(0);
+        $tagvs = array(
+          'p' => array(
+            0 => array('h' => 0.001, 'n' => 0.1),
+            1 => array('h' => 0.001, 'n' => 0.001)
+          ),
+          'li' => array(
+            0 => array('h' => 0.01, 'n' => 0.01),
+            1 => array('h' => 0.01, 'n' => 0.01)
+          )
+        );
+        $pdf->setHtmlVSpace($tagvs);
+
         $pdf->SetHeaderMargin($setpdf->topMargin);
         $pdf->SetFooterMargin($setpdf->footerMargin);
         $pdf->loadCustomFonts();
@@ -130,32 +145,32 @@ if (1==2) {
             //
             // Methods for each section type need to be created in pdf_create_function.php
 
-            switch ($sectionTypeName) {
-                case 'Text':
+            switch ($sectionTypeID) {
+                case 1:
                     $debug_html.=$setpdf->textSection($pdf);
                     break;
-                
-                case 'Subject (row)':
+
+                case 2:
                     $debug_html.=$setpdf->subjectReportRow($pdf);
                     break;
 
-                case 'Subject (Row-NonEmpty-Att)':
+                case 6:
                     $debug_html.=$setpdf->subjectReportRowNonEmptyAtt($pdf);
                     break;
 
-                case 'Subject (column)':
+                case 3:
                     $debug_html.=$setpdf->subjectReportColumn($pdf);
                     break;
-                
-                case 'Pastoral':
+
+                case 4:
                     $debug_html.=$setpdf->pastoralReport($pdf);
                     break;
-                
-                case 'Attendance (Term)':
+
+                case 7:
                     $debug_html.=$setpdf->attendanceTermReport($pdf);
                     break;
-                
-                case 'Page Break':
+
+                case 5:
                     $pdf->AddPage();
             }
         }
@@ -213,7 +228,7 @@ if (1==2) {
         //print_r($data);
         //print "<br>";
         $rs = $connection2->prepare($sql);
-        $rs->execute($data);      
+        $rs->execute($data);
     } // end rollGroup while loop
 
 
