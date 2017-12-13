@@ -23,17 +23,17 @@ if (1==2) {
     print "</div>";
     exit;
 } else {
-    
+
     //include "./pdf_function.php" ;
     include "./function.php";
     include "./pdfmail_send_function.php";
     //include "../../lib/PHPMailer/class.phpmailer.php";
     include $_SERVER['DOCUMENT_ROOT']."/lib/PHPMailer/PHPMailerAutoload.php";
-    
+
     setSessionVariables($guid, $connection2);
 
     $setpdf = new setpdf($guid, $connection2);
-    
+
     // check folder exists
     $setpdf->checkFolder();
     $archiveFolderPath = $_SESSION['archiveFilePath'].$setpdf->schoolYearName.'/';
@@ -41,7 +41,7 @@ if (1==2) {
     // go through class list to see which ones need to be printed
     //$rollGroupList = $setpdf->rollGroupList;
     $text = ''; // variable for holding output for email sending log page
-    
+
     for ($i=0; $i<count($setpdf->printList); $i++) {
         $setpdf->studentID = $setpdf->printList[$i]['studentID'];
         $studentDetail = $setpdf->readStudentDetail();
@@ -82,7 +82,7 @@ if (1==2) {
 
         $reportName = '';
         $fileName = '';
-        
+
         $reportName = $setpdf->readLastStudentReportFilename();
         if (!empty($reportName)) {
             $fileName = $archiveFolderPath.$reportName;
@@ -174,7 +174,7 @@ if (1==2) {
             "&rollGroupID=$setpdf->rollGroupID".
             "&reportID=$setpdf->reportID".
             "&text=$text";
-    
+
     header("location:$returnPath");
     */
     $returnPath = $_SESSION[$guid]["absoluteURL"]."/index.php?q=/modules/".$_SESSION[$guid]["module"]."/pdfmail_sent.php";
@@ -185,7 +185,7 @@ if (1==2) {
         echo "<input type='hidden' name='reportID' value='".$setpdf->reportID."' />";
         echo "<input type='hidden' name='text' value='$text' />";
     echo "</form>";
-    
+
     ?>
     <script>
         document.forms['sentForm'].submit();
@@ -213,8 +213,7 @@ function sendmail($guid,
     $emailSubject = is_null($emailSubject) ? "Message from Bali Island School" : $emailSubject;
     $defaultBody = <<<EOD
 Dear $toName<br><br>
-Please find attached the progress report for this term. This report will focus on the skills that were covered during this term, which highlights the current progress in learning as well as how this was achieved through the reporting of the Approaches to Learning Skills. Where appropriate the report includes comments to provide further details, as well as some insight in how to continue to grow.<br><br>
-
+Please find attached the progress report for this semester. <br><br>
 If you have any questions concerning the report please contact the secretary.<br><br>
 Kind regards.<br><br>
 Bali Island School<br>
@@ -227,7 +226,7 @@ EOD;
     $replyTo = is_null($replyTo) ? $from : $replyTo;
     $replyToName = is_null($replyToName) ? $fromName : $replyToName;
     /////////// END DEFAULT VALUES ////////////////
-        
+
     //$mail = new PHPMailer(); // defaults to using php "mail()"
     $mail = getGibbonMailer($guid); // defaults to using php "mail()"
 

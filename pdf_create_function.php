@@ -675,12 +675,12 @@ td {
 .col1 {
     text-align: left;
     font-family: pt_sans, PT Sans, helvetica, sans-serif;
-    width: 90%;
+    width: 87%;
 }
 .col2 {
     text-align: center;
     font-family: pt_sans, PT Sans, helvetica, sans-serif;
-    width: 10%;
+    width: 13%;
 }
 .commentHead {
     font-weight; bold;
